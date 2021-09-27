@@ -12,4 +12,9 @@ class Armada extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'kode_armada';
+    }
 }

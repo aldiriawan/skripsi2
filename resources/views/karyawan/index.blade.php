@@ -8,6 +8,12 @@
         <h1 class="h3 mb-0 text-gray-800">Data Karyawan</h1>
     </div>
 
+    @if(session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <div class="table-responsive col-lg-8">
         <table class="table table-hover table-sm">
             <thead>
@@ -28,7 +34,13 @@
                     <td>{{ $user->role }}</td>
                     <td>
                         <a href="" style="color: orange"><i class="fas fa-edit"></i></a>
-                        <a href="" style="color: red"><i class="fas fa-trash danger"></i></a>
+                        <form action="/karyawan/{{ $user->id }}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="border-0" style="color: red"
+                                onclick="return confirm('Apakah anda yakin?')"><i
+                                    class="fas fa-trash danger"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

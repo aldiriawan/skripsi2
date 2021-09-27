@@ -34,8 +34,10 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');
-Route::get('/karyawan', [UserController::class, 'index'])->name('admin')->middleware('auth');
-Route::get('/armada', [ArmadaController::class, 'index'])->name('admin')->middleware('auth');
+
+Route::resource('/karyawan', UserController::class)->middleware('auth');
+
+Route::resource('/armada', ArmadaController::class)->middleware('auth');
 
 Route::get('/checker', [CheckerController::class, 'index'])->name('checker')->middleware('auth');
 

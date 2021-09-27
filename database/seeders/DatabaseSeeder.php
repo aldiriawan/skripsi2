@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         //User::factory(8)->create();
 
         User::create([
-            'name' => 'Leader Ao',
+            'name' => 'Leader AO',
             'email' => 'leader@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'leader'
@@ -39,6 +39,27 @@ class DatabaseSeeder extends Seeder
             'role' => 'checker'
         ]);
 
+        User::create([
+            'name' => 'Leader AO2',
+            'email' => 'leader2@gmail.com',
+            'password' => bcrypt('password'),
+            'role' => 'leader'
+        ]);
+
+        User::create([
+            'name' => 'Admin AO2',
+            'email' => 'admin2@gmail.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin'
+        ]);
+
+        User::create([
+            'name' => 'Checker AO2',
+            'email' => 'checker2@gmail.com',
+            'password' => bcrypt('password'),
+            'role' => 'checker'
+        ]);
+
         Armada::create([
             'kode_armada' => 'AOLC01',
             'Tipe_armada' => 'Big Bus',
@@ -53,6 +74,24 @@ class DatabaseSeeder extends Seeder
 
         Armada::create([
             'kode_armada' => 'AOLC03',
+            'Tipe_armada' => 'Mini Bus',
+            'merek_armada' => 'Mercedes'
+        ]);
+
+        Armada::create([
+            'kode_armada' => 'AOLC04',
+            'Tipe_armada' => 'Big Bus',
+            'merek_armada' => 'Mercedes'
+        ]);
+
+        Armada::create([
+            'kode_armada' => 'AOLC05',
+            'Tipe_armada' => 'Medium Bus',
+            'merek_armada' => 'Hino'
+        ]);
+
+        Armada::create([
+            'kode_armada' => 'AOLC06',
             'Tipe_armada' => 'Mini Bus',
             'merek_armada' => 'Mercedes'
         ]);

@@ -40,7 +40,16 @@ class ArmadaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'kode_armada' => 'required|max:255:unique:armadas',
+            'tipe_armada' => 'required|max:255',
+            'merek_armada' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
+        Armada::create($validatedData);
+
+        return redirect('/armada')->with('success', 'Data Armada berhasil ditambahkan');
     }
 
     /**
@@ -62,7 +71,11 @@ class ArmadaController extends Controller
      */
     public function edit(Armada $armada)
     {
-        //
+        return view('armada.edit', [
+            'armada' => $armada,
+            'title' => 'Edit Armada',
+            'active' => 'edit',
+        ]);
     }
 
     /**
@@ -74,7 +87,24 @@ class ArmadaController extends Controller
      */
     public function update(Request $request, Armada $armada)
     {
-        //
+
+        $rules = [
+            'kode_armada' => 'required|max:255|unique:armadas',
+            'tipe_armada' => 'required|ma:255',
+            'merek_armada' => 'required|max:255',
+            'body' => 'required'
+        ];
+
+        if ($request->kode_armada != $armada->kode_armada) {
+            $rules['kode_armada'] = 'required|max:255|unique:armadas';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        Armada::where('id', $armada->id)
+            ->update($validatedData);
+
+        return redirect('/armada')->with('success', 'Update Berhasil');
     }
 
     /**
@@ -85,6 +115,7 @@ class ArmadaController extends Controller
      */
     public function destroy(Armada $armada)
     {
-        //
+        Armada::destroy($armada->id);
+        return redirect('/armada')->with('success', 'Data Armada berhasil dihapus');
     }
 }
