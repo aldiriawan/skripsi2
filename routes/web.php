@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArmadaController;
 use App\Http\Controllers\CheckerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -32,20 +34,8 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');
-
-Route::get('/admin/karyawan', function () {
-    return view('admin.karyawan', [
-        'title' => 'Data Karyawan',
-        'active' => 'karyawan'
-    ]);
-})->middleware('auth');
-
-Route::get('/admin/armada', function () {
-    return view('admin.armada', [
-        'title' => 'Data Armada',
-        'active' => 'armada'
-    ]);
-})->middleware('auth');
+Route::get('/karyawan', [UserController::class, 'index'])->name('admin')->middleware('auth');
+Route::get('/armada', [ArmadaController::class, 'index'])->name('admin')->middleware('auth');
 
 Route::get('/checker', [CheckerController::class, 'index'])->name('checker')->middleware('auth');
 

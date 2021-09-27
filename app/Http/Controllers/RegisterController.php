@@ -21,8 +21,12 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:5|max:255',
+            'image' => 'image|file|max:1024',
+            'body' => 'required'
         ]);
+
+        $validatedData['image'] = $request->file('image')->store('user-images');
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
         $validatedData['password'] = Hash::make($validatedData['password']);

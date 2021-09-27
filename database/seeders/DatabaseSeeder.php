@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use App\Models\User;
+use App\Models\Armada;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -37,6 +37,24 @@ class DatabaseSeeder extends Seeder
             'email' => 'checker@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'checker'
+        ]);
+
+        Armada::create([
+            'kode_armada' => 'AOLC01',
+            'Tipe_armada' => 'Big Bus',
+            'merek_armada' => 'Mercedes'
+        ]);
+
+        Armada::create([
+            'kode_armada' => 'AOLC02',
+            'Tipe_armada' => 'Medium Bus',
+            'merek_armada' => 'Hino'
+        ]);
+
+        Armada::create([
+            'kode_armada' => 'AOLC03',
+            'Tipe_armada' => 'Mini Bus',
+            'merek_armada' => 'Mercedes'
         ]);
     }
 }

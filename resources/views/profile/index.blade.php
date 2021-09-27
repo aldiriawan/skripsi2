@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-12 col-sm-6 mb-3">
                     <label for="role">Role</label>
-                    <input type="text" class="form-control" readonly name="role" value="{{ auth()->user()->role_id }}">
+                    <input type="text" class="form-control" readonly name="role" value="{{ auth()->user()->role }}">
                     </span>
                 </div>
                 <small class="text-muted">Since <?= date('d F Y'); ?></small>

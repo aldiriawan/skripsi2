@@ -15,7 +15,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Please Register</h1>
                                 </div>
-                                <form class="user" action="/register" method="POST">
+                                <form class="user" action="/register" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <input type="text"
@@ -50,14 +50,21 @@
                                         </div>
                                         @enderror
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-control-user py-0">Upload Profile Picture</label>
+                                        <input class="form-control-user @error('image') is-invalid @enderror"
+                                            type="file" id="image" name="image">
+                                        @error('image')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Register Account
                                     </button>
                                 </form>
                                 <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
                                 <div class="text-center">
                                     <a class="small" href="/login">Login Now</a>
                                 </div>
