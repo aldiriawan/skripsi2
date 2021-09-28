@@ -60,7 +60,10 @@ class ArmadaController extends Controller
      */
     public function show(Armada $armada)
     {
-        //
+        return view('admin.armada.show', [
+            'armada' => $armada,
+            'title' => 'Detail Armada',
+        ]);
     }
 
     /**
@@ -74,7 +77,6 @@ class ArmadaController extends Controller
         return view('admin.armada.edit', [
             'armada' => $armada,
             'title' => 'Edit Armada',
-            'active' => 'edit',
         ]);
     }
 
