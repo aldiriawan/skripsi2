@@ -15,9 +15,8 @@ class ArmadaController extends Controller
     public function index()
     {
         $data = Armada::all();
-        return view('armada.index', [
+        return view('admin.armada.index', [
             'title' => 'Data Armada',
-            'active' => 'armada',
             'armadas' => $data
         ]);
     }
@@ -29,7 +28,9 @@ class ArmadaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.armada.create', [
+            'title' => 'Tambah Data Armada',
+        ]);
     }
 
     /**
@@ -41,15 +42,14 @@ class ArmadaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'kode_armada' => 'required|max:255:unique:armadas',
+            'kode_armada' => 'required|max:255|unique:armadas',
             'tipe_armada' => 'required|max:255',
             'merek_armada' => 'required|max:255',
-            'body' => 'required'
         ]);
 
         Armada::create($validatedData);
 
-        return redirect('/armada')->with('success', 'Data Armada berhasil ditambahkan');
+        return redirect('/admin/armada')->with('success', 'Data Armada berhasil ditambahkan');
     }
 
     /**
@@ -71,7 +71,7 @@ class ArmadaController extends Controller
      */
     public function edit(Armada $armada)
     {
-        return view('armada.edit', [
+        return view('admin.armada.edit', [
             'armada' => $armada,
             'title' => 'Edit Armada',
             'active' => 'edit',
@@ -104,7 +104,7 @@ class ArmadaController extends Controller
         Armada::where('id', $armada->id)
             ->update($validatedData);
 
-        return redirect('/armada')->with('success', 'Update Berhasil');
+        return redirect('/admin/armada')->with('success', 'Update Berhasil');
     }
 
     /**
@@ -116,6 +116,6 @@ class ArmadaController extends Controller
     public function destroy(Armada $armada)
     {
         Armada::destroy($armada->id);
-        return redirect('/armada')->with('success', 'Data Armada berhasil dihapus');
+        return redirect('/admin/armada')->with('success', 'Data Armada berhasil dihapus');
     }
 }

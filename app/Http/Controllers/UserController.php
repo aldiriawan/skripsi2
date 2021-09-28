@@ -15,9 +15,8 @@ class UserController extends Controller
     public function index()
     {
         $data = User::all();
-        return view('karyawan.index', [
+        return view('admin.karyawan.index', [
             'title' => 'Data Karyawan',
-            'active' => 'karyawan',
             'users' => $data
         ]);
     }
@@ -86,6 +85,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/karyawan')->with('success', 'Data Karyawan berhasil dihapus');
+        return redirect('/admin/karyawan')->with('success', 'Data Karyawan berhasil dihapus');
     }
 }

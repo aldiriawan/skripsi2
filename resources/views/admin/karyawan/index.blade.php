@@ -5,9 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Armada</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Tambah Armada Baru</a>
+        <h1 class="h3 mb-0 text-gray-800">Data Karyawan</h1>
     </div>
 
     @if(session()->has('success'))
@@ -21,23 +19,22 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Kode Armada</th>
-                    <th scope="col">Tipe Armada</th>
-                    <th scope="col">Merek Armada</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($armadas as $armada)
+                @foreach ($users as $user)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $armada->kode_armada }}</td>
-                    <td>{{ $armada->tipe_armada }}</td>
-                    <td>{{ $armada->merek_armada }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role }}</td>
                     <td>
-                        <a href="/armada/{{ $armada->kode_armada }}" style="color: orange"><i
-                                class="fas fa-edit"></i></a>
-                        <form action="/armada/{{ $armada->kode_armada }}" method="POST" class="d-inline">
+                        <a href="" style="color: orange"><i class="fas fa-edit"></i></a>
+                        <form action="/admin/karyawan/{{ $user->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="border-0" style="color: red"

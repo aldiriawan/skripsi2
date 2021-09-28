@@ -15,7 +15,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Edit Armada</h1>
                                 </div>
-                                <form class="user" action="/armada/{{ $armada->kode_armada }}" method="POST"
+                                <form class="user" action="/admin/armada/{{ $armada->kode_armada }}" method="POST"
                                     enctype="multipart/form-data">
                                     @method('put')
                                     @csrf
