@@ -4,56 +4,55 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Detail Armada {{ $armada->kode_armada }}</h1>
+    <h1 class="h3 text-gray-800">Detail Armada {{ $armada->kode_armada }}</h1>
 
-    <div class="row">
-        <div class="col-12 col-sm8- offset-sm-2 col-md-6 offset-md-3 pt-3 pb-3">
-            <div class="container text-center justify-content-center">
-                <div class="row">
-                    <div class="col-md-4 rounded d-block mx-auto mb-5">
-                        <img src="..." class=" img-fluid rounded-start" alt="{{ $armada->kode_armada }}">
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 mb-3">
-                    <label for="fullname">Kode Armada</label>
-                    <input type="text" class="form-control" readonly name="fullname" value="{{ $armada->kode_armada }}">
-                </div>
-                <small class="text-muted">Since <?= date('d F Y'); ?></small>
-                <a href="/posts" class="text-decoration-none d-block mt-4">Update Profile</a>
-            </div>
+    <a href="" class="my-2 btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+    <form action="/admin/armada/{{ $armada->kode_armada }}" method="POST" class="d-inline">
+        @method('delete')
+        @csrf
+        <button class="my-2 btn btn-danger" onclick="return confirm('Apakah anda yakin?')"><i
+                class="fas fa-trash danger"></i>
+            Hapus</button>
+    </form>
+
+    <div class="card col-lg-5 my-2">
+        <img src=" https://source.unsplash.com/1200x400/?bus" class="card-img-top img-fluid rounded"
+            alt="{{ $armada->kode_armada }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ $armada->kode_armada }}</h5>
+            <h6 class="card-text">Kode Armada : {{ $armada->kode_armada }}</h6>
+            <h6 class="card-text">Tipe Armada : {{ $armada->tipe_armada }}</h6>
+            <h6 class="card-text">Merek Armada : {{ $armada->merek_armada }}</h6>
+            <h6 class="card-text">Beroperasi Sejak : <?= date('d F Y'); ?></h6>
         </div>
     </div>
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+            <h6 class="m-0 font-weight-bold text-primary">KM yang ditempuh Bulan
+                <div class="dropdown pl-2 my-2 d-inline">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </button>
+                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+
+            </h6>
         </div>
         <div class="card-body">
-            <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-            <div class="progress mb-4">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20"
-                    aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="chart-bar">
+                <canvas id="myBarChart"></canvas>
             </div>
-            <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-            <div class="progress mb-4">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-            <div class="progress mb-4">
-                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0"
-                    aria-valuemax="100"></div>
-            </div>
-            <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-            <div class="progress mb-4">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-            <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+            <hr>
+            Test
         </div>
     </div>
+
+
 </div>
 @endsection
