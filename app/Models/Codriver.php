@@ -5,25 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Armada extends Model
+class Codriver extends Model
 {
     use HasFactory;
 
-    public $table = "ao_armada";
+    public $table = "ao_codriver";
 
     protected $guarded = [
-        'id_armada',
+        'id_codriver',
     ];
-
-    public function getRouteKeyName()
-    {
-        return 'kode_armada';
-    }
-
-    public function ao_tipe_armada()
-    {
-        return $this->belongsTo(TipeArmada::class);
-    }
 
     public function ao_trips()
     {

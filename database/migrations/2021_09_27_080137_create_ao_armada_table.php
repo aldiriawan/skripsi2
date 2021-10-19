@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArmadasTable extends Migration
+class CreateAoArmadaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateArmadasTable extends Migration
      */
     public function up()
     {
-        Schema::create('armadas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('ao_armada', function (Blueprint $table) {
+            $table->id('id_armada');
+            $table->foreignId('id_tipe_armada');
             $table->string('kode_armada')->unique();
-            $table->string('tipe_armada');
             $table->string('merek_armada');
-            $table->string('image')->nullable();
+            $table->date('serviced_at')->nullable();
+            $table->integer('jumlah_kerusakan')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateArmadasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('armadas');
+        Schema::dropIfExists('ao_armada');
     }
 }

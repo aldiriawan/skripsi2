@@ -89,10 +89,8 @@ class ArmadaController extends Controller
      */
     public function update(Request $request, Armada $armada)
     {
-
         $rules = [
             'kode_armada' => 'required|max:255|unique:armadas',
-            'tipe_armada' => 'required|ma:255',
             'merek_armada' => 'required|max:255',
             'body' => 'required'
         ];

@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Armada;
+use App\Models\Driver;
+use App\Models\Codriver;
+use App\Models\TipeArmada;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,80 +23,125 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Leader AO',
-            'email' => 'leader@gmail.com',
+            'username' => 'leaderao1',
             'password' => bcrypt('password'),
             'role' => 'leader'
         ]);
 
         User::create([
             'name' => 'Admin AO',
-            'email' => 'admin@gmail.com',
+            'username' => 'adminao1',
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);
 
         User::create([
             'name' => 'Checker AO',
-            'email' => 'checker@gmail.com',
+            'username' => 'checkerao1',
             'password' => bcrypt('password'),
             'role' => 'checker'
         ]);
 
         User::create([
             'name' => 'Leader AO2',
-            'email' => 'leader2@gmail.com',
+            'username' => 'leaderao2',
             'password' => bcrypt('password'),
             'role' => 'leader'
         ]);
 
         User::create([
             'name' => 'Admin AO2',
-            'email' => 'admin2@gmail.com',
+            'username' => 'adminao2',
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);
 
         User::create([
             'name' => 'Checker AO2',
-            'email' => 'checker2@gmail.com',
+            'username' => 'checkerao2',
             'password' => bcrypt('password'),
             'role' => 'checker'
         ]);
 
+        TipeArmada::create([
+            'tipe_armada' => 'Big Bus',
+            'kapasitas' => 48
+        ]);
+
+        TipeArmada::create([
+            'tipe_armada' => 'Medium Bus',
+            'kapasitas' => 39
+        ]);
+
+        TipeArmada::create([
+            'tipe_armada' => 'Mini Bus',
+            'kapasitas' => 14
+        ]);
+
         Armada::create([
             'kode_armada' => 'AOLC01',
-            'Tipe_armada' => 'Big Bus',
+            'id_tipe_armada' => mt_rand(1, 3),
             'merek_armada' => 'Mercedes'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC02',
-            'Tipe_armada' => 'Medium Bus',
+            'id_tipe_armada' => mt_rand(1, 3),
             'merek_armada' => 'Hino'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC03',
-            'Tipe_armada' => 'Mini Bus',
+            'id_tipe_armada' => mt_rand(1, 3),
             'merek_armada' => 'Mercedes'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC04',
-            'Tipe_armada' => 'Big Bus',
+            'id_tipe_armada' => mt_rand(1, 3),
             'merek_armada' => 'Mercedes'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC05',
-            'Tipe_armada' => 'Medium Bus',
+            'id_tipe_armada' => mt_rand(1, 3),
             'merek_armada' => 'Hino'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC06',
-            'Tipe_armada' => 'Mini Bus',
+            'id_tipe_armada' => mt_rand(1, 3),
             'merek_armada' => 'Mercedes'
+        ]);
+
+        Driver::create([
+            'nama_driver' => 'driver 1',
+            'nik_driver' => mt_rand(1, 50000)
+        ]);
+
+        Driver::create([
+            'nama_driver' => 'driver 2',
+            'nik_driver' => mt_rand(1, 50000)
+        ]);
+
+        Driver::create([
+            'nama_driver' => 'driver 3',
+            'nik_driver' => mt_rand(1, 50000)
+        ]);
+
+        Codriver::create([
+            'nama_codriver' => 'Codriver 1',
+            'nik_codriver' => mt_rand(1, 50000)
+        ]);
+
+        Codriver::create([
+            'nama_codriver' => 'Codriver 2',
+            'nik_codriver' => mt_rand(1, 50000)
+        ]);
+
+        Codriver::create([
+            'nama_codriver' => 'Codriver 3',
+            'nik_codriver' => mt_rand(1, 50000)
         ]);
     }
 }
