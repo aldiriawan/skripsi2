@@ -12,8 +12,13 @@ class Driver extends Model
     public $table = "ao_driver";
 
     protected $guarded = [
-        'id_driver',
+        'id',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'nik_driver';
+    }
 
     public function ao_trips()
     {

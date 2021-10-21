@@ -21,20 +21,20 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="tipe_armada" class="form-label">Tipe Armada</label>
-                <input type="text" class="form-control" id="tipe_armada" name="tipe_armada"
-                    value="{{ old('tipe_armada') }}" required>
-                @error('tipe_armada')
+                <label for="merek_armada" class="form-label">Merek Armada</label>
+                <input type="text" class="form-control" id="merek_armada" name="merek_armada"
+                    value="{{ old('merek_armada') }}" required>
+                @error('merek_armada')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="merek_armada" class="form-label">Merek Armada</label>
-                <input type="text" class="form-control" id="merek_armada" name="merek_armada"
-                    value="{{ old('merek_armada') }}" required>
-                @error('merek_armada')
+                <label for="tipe_armada" class="form-label">Tipe Armada</label>
+                <input type="text" class="form-control" id="tipe_armada" name="tipe_armada"
+                    value="{{ old('tipe_armada') }}" required>
+                @error('tipe_armada')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

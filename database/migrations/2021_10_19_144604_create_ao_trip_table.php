@@ -14,7 +14,7 @@ class CreateAoTripTable extends Migration
     public function up()
     {
         Schema::create('ao_trip', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->foreignId('id_armada');
             $table->foreignId('id_driver');
             $table->foreignId('id_codriver');

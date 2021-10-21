@@ -14,7 +14,11 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $data = Trip::all();
+        return view('trip.index', [
+            'title' => 'Laporan Admin',
+            'trip' => $data
+        ]);
     }
 
     /**

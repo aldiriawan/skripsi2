@@ -23,42 +23,42 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Leader AO',
-            'username' => 'leaderao1',
+            'email' => 'leader1@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'leader'
         ]);
 
         User::create([
             'name' => 'Admin AO',
-            'username' => 'adminao1',
+            'email' => 'admin1@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);
 
         User::create([
             'name' => 'Checker AO',
-            'username' => 'checkerao1',
+            'email' => 'checker1@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'checker'
         ]);
 
         User::create([
             'name' => 'Leader AO2',
-            'username' => 'leaderao2',
+            'email' => 'leader2@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'leader'
         ]);
 
         User::create([
             'name' => 'Admin AO2',
-            'username' => 'adminao2',
+            'email' => 'admin2@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);
 
         User::create([
             'name' => 'Checker AO2',
-            'username' => 'checkerao2',
+            'email' => 'checker2@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'checker'
         ]);

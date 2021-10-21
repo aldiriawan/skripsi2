@@ -21,9 +21,12 @@
         <div class="card-body">
             <h5 class="card-title">{{ $armada->kode_armada }}</h5>
             <h6 class="card-text">Kode Armada : {{ $armada->kode_armada }}</h6>
-            <h6 class="card-text">Tipe Armada : {{ $armada->tipe_armada }}</h6>
             <h6 class="card-text">Merek Armada : {{ $armada->merek_armada }}</h6>
-            <h6 class="card-text">Beroperasi Sejak : <?= date('d F Y'); ?></h6>
+            <h6 class="card-text">Tipe Armada : {{ $armada->id_tipe_armada }}</h6>
+            <h6 class="card-text">Kapasitas Armada : {{ $armada->id_tipe_armada }}</h6>
+            <h6 class="card-text">Beroperasi Sejak :
+                <?= date('d F Y'); ?>
+            </h6>
         </div>
     </div>
 

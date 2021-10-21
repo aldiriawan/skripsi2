@@ -5,7 +5,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Karyawan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Co-Driver</h1>
+        <a href="/admin/codriver/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Tambah Co-Driver Baru</a>
     </div>
 
     @if(session()->has('success'))
@@ -22,26 +24,27 @@
                         <tr>
                             <th>#</th>
                             <th>Nama Lengkap</th>
-                            <th>Alamat Email</th>
-                            <th>Posisi</th>
-                            <th>Mulai Bekerja</th>
+                            <th>NIK</th>
+                            <th>Jumlah Minus</th>
+                            <th>Jumlah Kesalahan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($codriver as $cd)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td><?= date('d F Y'); ?></td>
+                            <td>{{ $cd->nama_codriver }}</td>
+                            <td>{{ $cd->nik_codriver }}</td>
+                            <td>{{ $cd->jumlah_minus }}</td>
+                            <td>{{ $cd->jumlah_kesalahan }}</td>
                             <td>
-                                <a href="/admin/karyawan/{{ $user->id }}" style="color: blue"><i
+                                <a href="/admin/codriver/{{ $cd->nik_codriver }}" style="color: blue"><i
                                         class="px-1 fas fa-eye"></i></a>
-                                <a href="/admin/karyawan/{{ $user->id }}" style="color: orange"><i
+                                <a href="/admin/codriver/{{ $cd->nik_codriver }}" style="color: orange"><i
                                         class="px-1 fas fa-edit"></i></a>
-                                <form action="/admin/karyawan/{{ $user->id }}" method="POST" class="px-1 d-inline">
+                                <form action="/admin/codriver/{{ $cd->nik_codriver }}" method="POST"
+                                    class="px-1 d-inline">
                                     @method('delete')
                                     @csrf
                                     <button class="border-0" style="color: red"

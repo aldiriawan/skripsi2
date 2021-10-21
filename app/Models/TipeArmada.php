@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Armada;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TipeArmada extends Model
 {
@@ -12,7 +13,11 @@ class TipeArmada extends Model
     public $table = "ao_tipe_armada";
 
     protected $guarded = [
-        'id_tipe_armada',
+        'id',
+    ];
+
+    protected $fillable = [
+        'tipe_armada', 'kapasitas'
     ];
 
     public function ao_armadas()

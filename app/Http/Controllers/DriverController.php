@@ -14,7 +14,11 @@ class DriverController extends Controller
      */
     public function index()
     {
-        //
+        $data = Driver::all();
+        return view('admin.driver.index', [
+            'title' => 'Data Driver',
+            'driver' => $data
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.driver.create', [
+            'title' => 'Tambah Driver Baru',
+        ]);
     }
 
     /**
@@ -35,7 +41,14 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_driver' => 'required|max:100|unique:ao_driver',
+            'nik_driver' => 'required|numeric|min:16|unique:ao_driver',
+        ]);
+
+        Driver::create($validatedData);
+
+        return redirect('/admin/driver')->with('success', 'Data Driver berhasil ditambahkan');
     }
 
     /**
@@ -80,6 +93,7 @@ class DriverController extends Controller
      */
     public function destroy(Driver $driver)
     {
-        //
+        Driver::destroy($driver->id);
+        return redirect('/admin/driver')->with('success', 'Data Driver berhasil dihapus');
     }
 }

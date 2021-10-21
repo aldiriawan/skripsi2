@@ -42,7 +42,7 @@ class ArmadaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'kode_armada' => 'required|max:255|unique:armadas',
+            'kode_armada' => 'required|max:255|unique:ao_armada',
             'tipe_armada' => 'required|max:255',
             'merek_armada' => 'required|max:255',
         ]);

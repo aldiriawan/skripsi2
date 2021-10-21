@@ -14,7 +14,7 @@ class CreateAoDriverTable extends Migration
     public function up()
     {
         Schema::create('ao_driver', function (Blueprint $table) {
-            $table->id('id_driver');
+            $table->id('id');
             $table->string('nama_driver')->unique();
             $table->string('nik_driver')->unique();
             $table->integer('jumlah_minus')->nullable();

@@ -14,7 +14,7 @@ class CreateAoTripKesalahanTable extends Migration
     public function up()
     {
         Schema::create('ao_trip_kesalahan', function (Blueprint $table) {
-            $table->id('id_trip_kesalahan');
+            $table->id('id');
             $table->foreignId('id_trip');
             $table->string('keterangan');
             $table->string('gambar_bukti_kesalahan')->nullable();

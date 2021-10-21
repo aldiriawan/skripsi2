@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAoUsersTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAoUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ao_users', function (Blueprint $table) {
-            $table->id('id_users');
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('id');
             $table->string('name');
-            $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateAoUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ao_users');
+        Schema::dropIfExists('users');
     }
 }

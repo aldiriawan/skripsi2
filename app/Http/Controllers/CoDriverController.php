@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CoDriver;
+use App\Models\Codriver;
 use Illuminate\Http\Request;
 
-class CoDriverController extends Controller
+class CodriverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,11 @@ class CoDriverController extends Controller
      */
     public function index()
     {
-        //
+        $data = Codriver::all();
+        return view('admin.codriver.index', [
+            'title' => 'Data Co-Driver',
+            'codriver' => $data
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class CoDriverController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.codriver.create', [
+            'title' => 'Tambah Co-Driver Baru',
+        ]);
     }
 
     /**
@@ -35,16 +41,23 @@ class CoDriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_codriver' => 'required|max:100|unique:ao_codriver',
+            'nik_codriver' => 'required|numeric|min:16|unique:ao_codriver',
+        ]);
+
+        Codriver::create($validatedData);
+
+        return redirect('/admin/codriver')->with('success', 'Data Co-Driver berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CoDriver  $coDriver
+     * @param  \App\Models\codriver  $codriver
      * @return \Illuminate\Http\Response
      */
-    public function show(CoDriver $coDriver)
+    public function show(Codriver $codriver)
     {
         //
     }
@@ -52,10 +65,10 @@ class CoDriverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CoDriver  $coDriver
+     * @param  \App\Models\Codriver  $codriver
      * @return \Illuminate\Http\Response
      */
-    public function edit(CoDriver $coDriver)
+    public function edit(Codriver $codriver)
     {
         //
     }
@@ -64,10 +77,10 @@ class CoDriverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CoDriver  $coDriver
+     * @param  \App\Models\Codriver  $codriver
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CoDriver $coDriver)
+    public function update(Request $request, Codriver $codriver)
     {
         //
     }
@@ -75,11 +88,12 @@ class CoDriverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CoDriver  $coDriver
+     * @param  \App\Models\Codriver  $codriver
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CoDriver $coDriver)
+    public function destroy(Codriver $codriver)
     {
-        //
+        Codriver::destroy($codriver->id);
+        return redirect('/admin/codriver')->with('success', 'Data Co-Driver berhasil dihapus');
     }
 }

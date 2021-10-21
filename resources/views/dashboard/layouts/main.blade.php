@@ -46,10 +46,6 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            @include('dashboard.layouts.footer')
-            <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
 

@@ -34,9 +34,17 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link {{ Request::is('admin/karyawan*') ? 'active' : '' }}" href="/admin/karyawan">
+        <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }} collapsed" href="#" data-toggle="collapse"
+            data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Data Karyawan</span></a>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/admin/driver">Driver</a>
+                <a class="collapse-item" href="/admin/codriver">Co-Driver</a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">

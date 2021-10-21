@@ -29,12 +29,12 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="email"
-                                            class="form-control form-control-user @error('email') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control form-control-user @error('username') is-invalid @enderror"
                                             id="
-                                            email" name="email" placeholder="Email Address" value="{{ old('email') }}"
-                                            required>
-                                        @error('email')
+                                            username" name="username" placeholder="Username"
+                                            value="{{ old('username') }}" required>
+                                        @error('username')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -45,16 +45,6 @@
                                             class="form-control form-control-user @error('password') is-invalid @enderror"
                                             id="password" name="password" placeholder="Password" required>
                                         @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-user py-0">Upload Profile Picture</label>
-                                        <input class="form-control-user @error('image') is-invalid @enderror"
-                                            type="file" id="image" name="image">
-                                        @error('image')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

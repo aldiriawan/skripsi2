@@ -14,7 +14,7 @@ class CreateAoArmadaTable extends Migration
     public function up()
     {
         Schema::create('ao_armada', function (Blueprint $table) {
-            $table->id('id_armada');
+            $table->id('id');
             $table->foreignId('id_tipe_armada');
             $table->string('kode_armada')->unique();
             $table->string('merek_armada');

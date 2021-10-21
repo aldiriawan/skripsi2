@@ -14,7 +14,7 @@ class CreateAoCodriverTable extends Migration
     public function up()
     {
         Schema::create('ao_codriver', function (Blueprint $table) {
-            $table->id('id_codriver');
+            $table->id('id');
             $table->string('nama_codriver')->unique();
             $table->string('nik_codriver')->unique();
             $table->integer('jumlah_minus')->nullable();

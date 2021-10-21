@@ -12,7 +12,7 @@ class TripKesalahan extends Model
     public $table = "ao_trip_kesalahan";
 
     protected $guarded = [
-        'id_trip_kesalahan',
+        'id',
     ];
 
     public function ao_trip()

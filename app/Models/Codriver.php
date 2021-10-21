@@ -12,8 +12,13 @@ class Codriver extends Model
     public $table = "ao_codriver";
 
     protected $guarded = [
-        'id_codriver',
+        'id',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'nik_codriver';
+    }
 
     public function ao_trips()
     {

@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Trip;
+use App\Models\TipeArmada;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Armada extends Model
 {
@@ -12,7 +15,7 @@ class Armada extends Model
     public $table = "ao_armada";
 
     protected $guarded = [
-        'id_armada',
+        'id',
     ];
 
     public function getRouteKeyName()
