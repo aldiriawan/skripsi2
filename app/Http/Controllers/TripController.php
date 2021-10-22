@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trip;
+use App\Models\Armada;
+use App\Models\Driver;
+use App\Models\Codriver;
 use Illuminate\Http\Request;
 
 class TripController extends Controller
@@ -28,7 +31,12 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
+        return view('trip.create', [
+            'title' => 'Tambah Laporan Admin',
+            'armadas' => Armada::all(),
+            'drivers' => Driver::all(),
+            'codrivers' => Codriver::all()
+        ]);
     }
 
     /**
@@ -39,7 +47,20 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'tanggal_trip' => 'required',
+            'id_armada' => 'required',
+            'rute' => 'required',
+            'id_driver' => 'required',
+            'id_codriver' => 'required',
+            'jumlah_penumpang_admin' => 'required|numeric'
+        ]);
+
+        $validatedData['id_user'] = auth()->user()->id;
+
+        Trip::create($validatedData);
+
+        return redirect('/admin')->with('success', 'Laporan Admin Baru berhasil ditambahkan');
     }
 
     /**
@@ -50,7 +71,11 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
-        //
+        $data = Trip::all();
+        return view('trip.show', [
+            'trip' => $data,
+            'title' => 'Detail Trip',
+        ]);
     }
 
     /**

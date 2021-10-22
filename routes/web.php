@@ -38,10 +38,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');
 
+Route::resource('/admin', TripController::class)->middleware('auth');
+
 Route::resource('/admin/driver', DriverController::class)->middleware('auth');
 Route::resource('/admin/codriver', CodriverController::class)->middleware('auth');
-
-Route::resource('/admin', TripController::class)->middleware('auth');
 
 Route::resource('/admin/armada', ArmadaController::class)->middleware('auth');
 

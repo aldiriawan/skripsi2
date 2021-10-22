@@ -15,12 +15,12 @@ class CreateAoTripTable extends Migration
     {
         Schema::create('ao_trip', function (Blueprint $table) {
             $table->id('id');
+            $table->foreignId('id_user');
             $table->foreignId('id_armada');
             $table->foreignId('id_driver');
             $table->foreignId('id_codriver');
             $table->date('tanggal_trip');
             $table->string('rute');
-            $table->string('ritase');
             $table->integer('jumlah_penumpang_admin');
             $table->integer('jumlah_penumpang_checker')->nullable();
             $table->integer('jumlah_minus')->nullable();
