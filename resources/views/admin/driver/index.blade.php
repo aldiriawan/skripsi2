@@ -16,7 +16,7 @@
     </div>
     @endif
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 text-center">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" width="100%" cellspacing="0">
@@ -25,6 +25,7 @@
                             <th>#</th>
                             <th>Nama Lengkap</th>
                             <th>NIK</th>
+                            <th>Telepon</th>
                             <th>Jumlah Minus</th>
                             <th>Jumlah Kesalahan</th>
                             <th>Aksi</th>
@@ -36,12 +37,13 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $d->nama_driver }}</td>
                             <td>{{ $d->nik_driver }}</td>
+                            <td>{{ $d->telepon_driver }}</td>
                             <td>{{ $d->jumlah_minus }}</td>
                             <td>{{ $d->jumlah_kesalahan }}</td>
                             <td>
                                 <a href="/admin/driver/{{ $d->nik_driver }}" style="color: blue"><i
                                         class="px-1 fas fa-eye"></i></a>
-                                <a href="/admin/driver/{{ $d->nik_driver }}" style="color: orange"><i
+                                <a href="/admin/driver/{{ $d->nik_driver }}/edit" style="color: orange"><i
                                         class="px-1 fas fa-edit"></i></a>
                                 <form action="/admin/driver/{{ $d->nik_driver }}" method="POST" class="px-1 d-inline">
                                     @method('delete')

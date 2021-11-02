@@ -20,6 +20,7 @@ use App\Http\Controllers\RegisterController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
+| WILDCARD SELALU DI BAWAH
 |
 */
 
@@ -38,13 +39,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');
 
-Route::resource('/admin', TripController::class)->middleware('auth');
-
 Route::resource('/admin/driver', DriverController::class)->middleware('auth');
 Route::resource('/admin/codriver', CodriverController::class)->middleware('auth');
-
 Route::resource('/admin/armada', ArmadaController::class)->middleware('auth');
-
 Route::get('/checker', [CheckerController::class, 'index'])->name('checker')->middleware('auth');
-
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+
+Route::resource('/admin', TripController::class)->middleware('auth');

@@ -17,6 +17,9 @@ class CreateAoCodriverTable extends Migration
             $table->id('id');
             $table->string('nama_codriver')->unique();
             $table->string('nik_codriver')->unique();
+            $table->string('umur_codriver');
+            $table->string('telepon_codriver');
+            $table->string('alamat_codriver');
             $table->integer('jumlah_minus')->nullable();
             $table->integer('jumlah_kesalahan')->nullable();
             $table->timestamps();

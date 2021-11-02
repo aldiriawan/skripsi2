@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Armada;
+use App\Models\TipeArmada;
 use Illuminate\Http\Request;
 
 class ArmadaController extends Controller
@@ -30,6 +31,7 @@ class ArmadaController extends Controller
     {
         return view('admin.armada.create', [
             'title' => 'Tambah Data Armada',
+            'tipe_armadas' => TipeArmada::all(),
         ]);
     }
 
@@ -43,8 +45,8 @@ class ArmadaController extends Controller
     {
         $validatedData = $request->validate([
             'kode_armada' => 'required|max:255|unique:ao_armada',
-            'tipe_armada' => 'required|max:255',
-            'merek_armada' => 'required|max:255',
+            'id_tipe_armada' => 'required',
+            'merek_armada' => 'required|max:255'
         ]);
 
         Armada::create($validatedData);
@@ -90,13 +92,13 @@ class ArmadaController extends Controller
     public function update(Request $request, Armada $armada)
     {
         $rules = [
-            'kode_armada' => 'required|max:255|unique:armadas',
+            'kode_armada' => 'required|max:255|unique:ao_armada',
             'merek_armada' => 'required|max:255',
-            'body' => 'required'
+            'tipe_armada' => 'required'
         ];
 
         if ($request->kode_armada != $armada->kode_armada) {
-            $rules['kode_armada'] = 'required|max:255|unique:armadas';
+            $rules['kode_armada'] = 'required|max:255|unique:ao_armada';
         }
 
         $validatedData = $request->validate($rules);

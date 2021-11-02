@@ -59,7 +59,10 @@ class CodriverController extends Controller
      */
     public function show(Codriver $codriver)
     {
-        //
+        return view('admin.codriver.show', [
+            'codriver' => $codriver,
+            'title' => 'Detail Co-Driver',
+        ]);
     }
 
     /**
@@ -70,7 +73,10 @@ class CodriverController extends Controller
      */
     public function edit(Codriver $codriver)
     {
-        //
+        return view('admin.codriver.edit', [
+            'codriver' => $codriver,
+            'title' => 'Edit Co-Driver',
+        ]);
     }
 
     /**

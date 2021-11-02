@@ -53,7 +53,7 @@
                                         @enderror
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Simpan Data Armada
+                                        Edit Data Armada
                                     </button>
                                 </form>
                             </div>

@@ -17,7 +17,7 @@
     @endif
 
     <!-- Table -->
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 text-center">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" width="100%" cellspacing="0">
@@ -42,9 +42,7 @@
                             <td>{{ $armada->serviced_at }}</td>
                             <td>{{ $armada->jumlah_kerusakan}}</td>
                             <td>
-                                <a href="/admin/armada/{{ $armada->kode_armada }}" style="color: blue"><i
-                                        class="px-1 fas fa-eye"></i></a>
-                                <a href="/admin/armada/{{ $armada->kode_armada }}" style="color: orange"><i
+                                <a href="/admin/armada/{{ $armada->kode_armada }}/edit" style="color: orange"><i
                                         class="px-1 fas fa-edit"></i></a>
                                 <form action="/admin/armada/{{ $armada->kode_armada }}" method="POST"
                                     class="px-1 d-inline">

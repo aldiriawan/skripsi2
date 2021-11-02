@@ -59,7 +59,10 @@ class DriverController extends Controller
      */
     public function show(Driver $driver)
     {
-        //
+        return view('admin.driver.show', [
+            'driver' => $driver,
+            'title' => 'Detail Driver',
+        ]);
     }
 
     /**
@@ -70,7 +73,10 @@ class DriverController extends Controller
      */
     public function edit(Driver $driver)
     {
-        //
+        return view('admin.driver.edit', [
+            'driver' => $driver,
+            'title' => 'Edit Driver',
+        ]);
     }
 
     /**

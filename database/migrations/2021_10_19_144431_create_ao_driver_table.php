@@ -17,6 +17,9 @@ class CreateAoDriverTable extends Migration
             $table->id('id');
             $table->string('nama_driver')->unique();
             $table->string('nik_driver')->unique();
+            $table->string('umur_driver');
+            $table->string('telepon_driver');
+            $table->string('alamat_driver');
             $table->integer('jumlah_minus')->nullable();
             $table->integer('jumlah_kesalahan')->nullable();
             $table->timestamps();

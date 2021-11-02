@@ -56,8 +56,6 @@ class TripController extends Controller
             'jumlah_penumpang_admin' => 'required|numeric'
         ]);
 
-        $validatedData['id_user'] = auth()->user()->id;
-
         Trip::create($validatedData);
 
         return redirect('/admin')->with('success', 'Laporan Admin Baru berhasil ditambahkan');

@@ -20,8 +20,60 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Admin
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }}" href="/admin">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Laporan Admin</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }} collapsed" href="#" data-toggle="collapse"
+            data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Data Karyawan</span></a>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/admin/driver">Driver</a>
+                <a class="collapse-item" href="/admin/codriver">Co-Driver</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('admin/armada*') ? 'active' : '' }}" href="/admin/armada">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Data Armada</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Checker
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/checker">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Laporan Checker</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
     @endif
+
     @if(auth()->user()->role == "admin")
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -56,7 +108,12 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
     @endif
+
     @if(auth()->user()->role == "checker")
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
     <div class="sidebar-heading">
         Checker
     </div>

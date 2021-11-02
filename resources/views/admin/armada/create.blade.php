@@ -31,14 +31,16 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="tipe_armada" class="form-label">Tipe Armada</label>
-                <input type="text" class="form-control" id="tipe_armada" name="tipe_armada"
-                    value="{{ old('tipe_armada') }}" required>
-                @error('tipe_armada')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
+                <label for="id_tipe_armada" class="form-label">Tipe Armada</label>
+                <select class="form-select" name="id_tipe_armada">
+                    @foreach ($tipe_armadas as $ta)
+                    @if (old('id_tipe_armada') == $ta->id)
+                    <option value="{{ $ta->id }}" selected>{{ $ta->tipe_armada }}</option>
+                    @else
+                    <option value="{{ $ta->id }}">{{ $ta->tipe_armada }}</option>
+                    @endif
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Tambah Armada</button>
         </form>
