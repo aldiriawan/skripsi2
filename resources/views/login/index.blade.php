@@ -20,7 +20,7 @@
             </div>
             @endif
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-0 shadow-lg my-5 ">
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
@@ -50,10 +50,6 @@
                                         Login
                                     </button>
                                 </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="/register">Register Now</a>
-                                </div>
                             </div>
                         </div>
                     </div>

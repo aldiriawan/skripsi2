@@ -44,6 +44,9 @@ class DriverController extends Controller
         $validatedData = $request->validate([
             'nama_driver' => 'required|max:100|unique:ao_driver',
             'nik_driver' => 'required|numeric|min:16|unique:ao_driver',
+            'umur_driver' => 'required|numeric|min:20|max:70',
+            'telepon_driver' => 'required|numeric',
+            'alamat_driver' => 'required',
         ]);
 
         Driver::create($validatedData);
@@ -88,7 +91,26 @@ class DriverController extends Controller
      */
     public function update(Request $request, Driver $driver)
     {
-        //
+        $rules = [
+            'umur_driver' => 'required|numeric|min:20|max:70',
+            'telepon_driver' => 'required|numeric',
+            'alamat_driver' => 'required',
+        ];
+
+        if ($request->nama_driver != $driver->nama_driver) {
+            $rules['nama_driver'] = 'required|max:100|unique:ao_driver';
+        }
+
+        if ($request->nik_driver != $driver->nik_driver) {
+            $rules['nik_driver'] = 'required|unique:ao_driver';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        Driver::where('id', $driver->id)
+            ->update($validatedData);
+
+        return redirect('/admin/driver')->with('success', 'Update Berhasil');
     }
 
     /**

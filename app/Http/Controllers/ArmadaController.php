@@ -18,6 +18,7 @@ class ArmadaController extends Controller
         $data = Armada::all();
         return view('admin.armada.index', [
             'title' => 'Data Armada',
+            'tipe_armadas' => TipeArmada::all(),
             'armadas' => $data
         ]);
     }
@@ -78,6 +79,7 @@ class ArmadaController extends Controller
     {
         return view('admin.armada.edit', [
             'armada' => $armada,
+            'tipe_armadas' => TipeArmada::all(),
             'title' => 'Edit Armada',
         ]);
     }
@@ -92,9 +94,8 @@ class ArmadaController extends Controller
     public function update(Request $request, Armada $armada)
     {
         $rules = [
-            'kode_armada' => 'required|max:255|unique:ao_armada',
             'merek_armada' => 'required|max:255',
-            'tipe_armada' => 'required'
+            'id_tipe_armada' => 'required'
         ];
 
         if ($request->kode_armada != $armada->kode_armada) {

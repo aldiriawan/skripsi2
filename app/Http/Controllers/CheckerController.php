@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checker;
+use App\Models\Armada;
+use App\Models\Driver;
+use App\Models\Codriver;
 use Illuminate\Http\Request;
 
 class CheckerController extends Controller
@@ -27,7 +30,12 @@ class CheckerController extends Controller
      */
     public function create()
     {
-        //
+        return view('checker.create', [
+            'title' => 'Tambah Laporan Checker',
+            'armadas' => Armada::all(),
+            'drivers' => Driver::all(),
+            'codrivers' => Codriver::all()
+        ]);
     }
 
     /**

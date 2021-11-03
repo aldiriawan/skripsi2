@@ -43,7 +43,10 @@ class CodriverController extends Controller
     {
         $validatedData = $request->validate([
             'nama_codriver' => 'required|max:100|unique:ao_codriver',
-            'nik_codriver' => 'required|numeric|min:16|unique:ao_codriver',
+            'nik_codriver' => 'required|numeric|unique:ao_codriver',
+            'umur_codriver' => 'required|numeric|min:20|max:70',
+            'telepon_codriver' => 'required|numeric',
+            'alamat_codriver' => 'required',
         ]);
 
         Codriver::create($validatedData);
@@ -88,7 +91,26 @@ class CodriverController extends Controller
      */
     public function update(Request $request, Codriver $codriver)
     {
-        //
+        $rules = [
+            'umur_codriver' => 'required|numeric|min:20|max:70',
+            'telepon_codriver' => 'required|numeric',
+            'alamat_codriver' => 'required',
+        ];
+
+        if ($request->nama_codriver != $codriver->nama_codriver) {
+            $rules['nama_codriver'] = 'required|max:100|unique:ao_codriver';
+        }
+
+        if ($request->nik_codriver != $codriver->nik_codriver) {
+            $rules['nik_codriver'] = 'required|unique:ao_codriver';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        Codriver::where('id', $codriver->id)
+            ->update($validatedData);
+
+        return redirect('/admin/codriver')->with('success', 'Update Berhasil');
     }
 
     /**

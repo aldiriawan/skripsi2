@@ -5,15 +5,15 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Laporan Admin Baru</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Laporan Checker Baru</h1>
     </div>
 
-    <form method="post" action="/admin/">
+    <form method="post" action="/checker/">
         @csrf
         <div class="col-lg-4 mb-3">
             <label for="tanggal_trip" class="form-label">Tanggal Trip</label>
             <input type="date" class="form-control @error('tanggal_trip') is-invalid @enderror" id="tanggal_trip"
-                name="tanggal_trip" value="{{ old('tanggal_trip') }}" autofocus required>
+                name="tanggal_trip" value="{{ old('tanggal_trip') }}" readonly>
             @error('tanggal_trip')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -35,7 +35,7 @@
         <div class="col-lg-4 mb-3">
             <label for="rute" class="form-label">Rute</label>
             <input type="text" class="form-control @error('rute') is-invalid @enderror" id="rute" name="rute"
-                value="{{ old('rute') }}" required>
+                value="{{ old('rute') }}" readonly>
             @error('rute')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -70,7 +70,7 @@
             <label for="jumlah_penumpang_admin" class="form-label">Jumlah Penumpang</label>
             <input type="text" class="form-control @error('jumlah_penumpang_admin') is-invalid @enderror"
                 id="jumlah_penumpang_admin" name="jumlah_penumpang_admin" value="{{ old('jumlah_penumpang_admin') }}"
-                required>
+                readonly>
             @error('jumlah_penumpang_admin')
             <div class="invalid-feedback">
                 {{ $message }}

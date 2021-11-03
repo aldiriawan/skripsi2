@@ -5,9 +5,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Data Armada</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Armada Baru</h1>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-3">
         <form method="post" action="/admin/armada/">
             @csrf
             <div class="mb-3">
@@ -30,9 +30,10 @@
                 </div>
                 @enderror
             </div>
-            <div class="mb-3">
+            <div class="mb-5">
                 <label for="id_tipe_armada" class="form-label">Tipe Armada</label>
-                <select class="form-select" name="id_tipe_armada">
+                <br>
+                <select class="form-control" name="id_tipe_armada">
                     @foreach ($tipe_armadas as $ta)
                     @if (old('id_tipe_armada') == $ta->id)
                     <option value="{{ $ta->id }}" selected>{{ $ta->tipe_armada }}</option>
@@ -42,7 +43,12 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Tambah Armada</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">
+                    Tambah
+                </button>
+                <a href="/admin/armada" class="my-2 btn btn-secondary">Batal</a>
+            </div>
         </form>
     </div>
 

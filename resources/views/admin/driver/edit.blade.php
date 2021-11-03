@@ -8,7 +8,8 @@
         <h1 class="h3 mb-0 text-gray-800">Edit Data Driver</h1>
     </div>
     <div class="col-lg-5">
-        <form method="post" action="/admin/driver/">
+        <form method="post" action="/admin/driver/{{ $driver->nik_driver }}">
+            @method('put')
             @csrf
             <div class="mb-3">
                 <label for="nama_driver" class="form-label">Nama Lengkap</label>
@@ -61,7 +62,10 @@
                 </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Edit Data Driver</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/admin/driver/{{ $driver->nik_driver }}" class="my-2 btn btn-secondary">Batal</a>
+            </div>
         </form>
     </div>
 

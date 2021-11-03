@@ -63,7 +63,10 @@
                 </div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Edit Data Co-Driver</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/admin/codriver/{{ $codriver->nik_codriver }}" class="my-2 btn btn-secondary">Batal</a>
+            </div>
         </form>
     </div>
 
