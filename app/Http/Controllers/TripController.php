@@ -84,7 +84,13 @@ class TripController extends Controller
      */
     public function edit(Trip $trip)
     {
-        //
+        return view('trip.edit', [
+            'trip' => $trip,
+            'title' => 'Edit Trip',
+            'armadas' => Armada::all(),
+            'drivers' => Driver::all(),
+            'codrivers' => Codriver::all(),
+        ]);
     }
 
     /**
@@ -96,7 +102,21 @@ class TripController extends Controller
      */
     public function update(Request $request, Trip $trip)
     {
-        //
+        $rules = [
+            'tanggal_trip' => 'required',
+            'id_armada' => 'required',
+            'rute' => 'required',
+            'id_driver' => 'required',
+            'id_codriver' => 'required',
+            'jumlah_penumpang_admin' => 'required|numeric'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Trip::where('id', $trip->id)
+            ->update($validatedData);
+
+        return redirect('/admin')->with('success', 'Update Berhasil');
     }
 
     /**
@@ -107,6 +127,7 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip)
     {
-        //
+        Trip::destroy($trip->id);
+        return redirect('/admin')->with('success', 'Data Trip berhasil dihapus');
     }
 }

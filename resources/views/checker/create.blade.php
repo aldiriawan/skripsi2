@@ -22,7 +22,7 @@
         </div>
         <div class="col-lg-4 mb-3">
             <label for="id_armada" class="form-label">Kode Armada</label><br>
-            <select class="form-control" name="id_armada">
+            <select class="form-control" name="id_armada" readonly>
                 @foreach ($armadas as $armada)
                 @if (old('id_armada') == $armada->id)
                 <option value="{{ $armada->id }}" selected>{{ $armada->kode_armada }}</option>
@@ -44,7 +44,7 @@
         </div>
         <div class="col-lg-4 mb-3">
             <label for="id_driver" class="form-label">Nama Driver</label><br>
-            <select class="form-control" name="id_driver">
+            <select class="form-control" name="id_driver" readonly>
                 @foreach ($drivers as $driver)
                 @if (old('id_driver') == $driver->id)
                 <option value="{{ $driver->id }}" selected>{{ $driver->nama_driver }}</option>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-lg-4 mb-3">
             <label for="id_codriver" class="form-label">Nama Co-Driver</label><br>
-            <select class="form-control" name="id_codriver">
+            <select class="form-control" name="id_codriver" readonly>
                 @foreach ($codrivers as $codriver)
                 @if (old('id_codriver') == $codriver->id)
                 <option value="{{ $codriver->id }}" selected>{{ $codriver->nama_codriver }}</option>
@@ -80,8 +80,19 @@
         <div class="col-lg-4 mb-3">
             <label for="catatan" class="form-label">Catatan Penting</label>
             <input type="text" class="form-control @error('catatan') is-invalid @enderror" id="catatan" name="catatan"
-                value="{{ old('catatan') }}">
+                value="{{ old('catatan') }}" readonly>
             @error('catatan')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="col-lg-4 mb-3">
+            <label for="jumlah_penumpang_checker" class="form-label">Jumlah Penumpang Checker</label>
+            <input type="text" class="form-control @error('jumlah_penumpang_checker') is-invalid @enderror"
+                id="jumlah_penumpang_checker" name="jumlah_penumpang_checker"
+                value="{{ old('jumlah_penumpang_checker') }}">
+            @error('jumlah_penumpang_checker')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

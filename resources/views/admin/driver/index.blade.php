@@ -41,8 +41,8 @@
                             <td>{{ $d->jumlah_minus }}</td>
                             <td>{{ $d->jumlah_kesalahan }}</td>
                             <td>
-                                <a href="/admin/driver/{{ $d->nik_driver }}" style="color: blue"><i
-                                        class="px-1 fas fa-eye"></i></a>
+                                {{-- <a href="/admin/driver/{{ $d->nik_driver }}" style="color: blue"><i
+                                        class="px-1 fas fa-eye"></i></a> --}}
                                 <a href="/admin/driver/{{ $d->nik_driver }}/edit" style="color: orange"><i
                                         class="px-1 fas fa-edit"></i></a>
                                 <form action="/admin/driver/{{ $d->nik_driver }}" method="POST" class="px-1 d-inline">

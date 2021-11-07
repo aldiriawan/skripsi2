@@ -37,9 +37,7 @@
                             <td>{{ $t->id_codriver }}</td>
                             <td>{{ $t->jumlah_penumpang_admin }}</td>
                             <td>
-                                <a href="/admin/{{ $t->tanggal_trip }}" style="color: blue"><i
-                                        class="px-1 fas fa-eye"></i></a>
-                                <a href="/admin/{{ $t->tanggal_trip }}" style="color: orange"><i
+                                <a href="/admin/{{ $t->tanggal_trip }}/edit" style="color: orange"><i
                                         class="px-1 fas fa-edit"></i></a>
                                 <form action="/admin/{{ $t->tanggal_trip }}" method="POST" class="px-1 d-inline">
                                     @method('delete')
