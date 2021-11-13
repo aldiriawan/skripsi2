@@ -53,7 +53,8 @@ class TripController extends Controller
             'rute' => 'required',
             'id_driver' => 'required',
             'id_codriver' => 'required',
-            'jumlah_penumpang_admin' => 'required|numeric'
+            'jumlah_penumpang_admin' => 'required|numeric',
+            'catatan' => ''
         ]);
 
         Trip::create($validatedData);
@@ -108,7 +109,8 @@ class TripController extends Controller
             'rute' => 'required',
             'id_driver' => 'required',
             'id_codriver' => 'required',
-            'jumlah_penumpang_admin' => 'required|numeric'
+            'jumlah_penumpang_admin' => 'required|numeric',
+            'catatan' => ''
         ];
 
         $validatedData = $request->validate($rules);
@@ -128,6 +130,6 @@ class TripController extends Controller
     public function destroy(Trip $trip)
     {
         Trip::destroy($trip->id);
-        return redirect('/admin')->with('success', 'Data Trip berhasil dihapus');
+        return redirect('/admin')->with('success', 'Laporan Admin berhasil dihapus');
     }
 }

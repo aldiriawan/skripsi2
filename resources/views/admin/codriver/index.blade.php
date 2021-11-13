@@ -24,7 +24,6 @@
                         <tr>
                             <th>#</th>
                             <th>Nama Lengkap</th>
-                            <th>NIK</th>
                             <th>Telepon</th>
                             <th>Jumlah Minus</th>
                             <th>Jumlah Kesalahan</th>
@@ -36,13 +35,12 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $cd->nama_codriver }}</td>
-                            <td>{{ $cd->nik_codriver }}</td>
                             <td>{{ $cd->telepon_codriver }}</td>
                             <td>{{ $cd->jumlah_minus }}</td>
                             <td>{{ $cd->jumlah_kesalahan }}</td>
                             <td>
-                                {{-- <a href="/admin/codriver/{{ $cd->nik_codriver }}" style="color: blue"><i
-                                        class="px-1 fas fa-eye"></i></a> --}}
+                                <a href="/admin/codriver/{{ $cd->nik_codriver }}" style="color: blue"><i
+                                        class="px-1 fas fa-eye"></i></a>
                                 <a href="/admin/codriver/{{ $cd->nik_codriver }}/edit" style="color: orange"><i
                                         class="px-1 fas fa-edit"></i></a>
                                 <form action="/admin/codriver/{{ $cd->nik_codriver }}" method="POST"

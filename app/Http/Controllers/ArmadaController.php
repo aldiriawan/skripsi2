@@ -95,7 +95,8 @@ class ArmadaController extends Controller
     {
         $rules = [
             'merek_armada' => 'required|max:255',
-            'id_tipe_armada' => 'required'
+            'id_tipe_armada' => 'required',
+            'serviced_at' => ''
         ];
 
         if ($request->kode_armada != $armada->kode_armada) {

@@ -39,7 +39,7 @@
                             <td>{{ $armada->kode_armada }}</td>
                             <td>{{ $armada->merek_armada }}</td>
                             <td>{{ $armada->id_tipe_armada }}</td>
-                            <td>{{ $armada->serviced_at }}</td>
+                            <td>{{ date('d-m-Y', strtotime($armada->serviced_at)) }}</td>
                             <td>{{ $armada->jumlah_kerusakan}}</td>
                             <td>
                                 <a href="/admin/armada/{{ $armada->kode_armada }}/edit" style="color: orange"><i

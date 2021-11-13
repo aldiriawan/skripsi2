@@ -64,7 +64,7 @@
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="/admin/driver/{{ $driver->nik_driver }}" class="my-2 btn btn-secondary">Batal</a>
+                <a href="/admin/driver/" class="my-2 btn btn-secondary">Batal</a>
             </div>
         </form>
     </div>

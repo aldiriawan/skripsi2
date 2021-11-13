@@ -65,7 +65,7 @@
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="/admin/codriver/{{ $codriver->nik_codriver }}" class="my-2 btn btn-secondary">Batal</a>
+                <a href="/admin/codriver/" class="my-2 btn btn-secondary">Batal</a>
             </div>
         </form>
     </div>

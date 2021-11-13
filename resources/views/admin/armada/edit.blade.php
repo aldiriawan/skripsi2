@@ -46,6 +46,16 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                <label for="serviced_at" class="form-label">Terakhir Service</label>
+                <input type="date" class="form-control form-control-user @error('serviced_at') is-invalid @enderror"
+                    id="serviced_at" name="serviced_at" value="{{ old('serviced_at', $armada->serviced_at) }}" required>
+                @error('serviced_at')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">
                     Update

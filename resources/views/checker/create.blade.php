@@ -91,8 +91,18 @@
             <label for="jumlah_penumpang_checker" class="form-label">Jumlah Penumpang Checker</label>
             <input type="text" class="form-control @error('jumlah_penumpang_checker') is-invalid @enderror"
                 id="jumlah_penumpang_checker" name="jumlah_penumpang_checker"
-                value="{{ old('jumlah_penumpang_checker') }}">
+                value="{{ old('jumlah_penumpang_checker') }}" required>
             @error('jumlah_penumpang_checker')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="col-lg-4 mb-3">
+            <label for="gambar_bukti_minus" class="form-label">Gambar Bukti Minus</label>
+            <input type="text" class="form-control @error('gambar_bukti_minus') is-invalid @enderror"
+                id="gambar_bukti_minus" name="gambar_bukti_minus" value="{{ old('gambar_bukti_minus') }}">
+            @error('gambar_bukti_minus')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

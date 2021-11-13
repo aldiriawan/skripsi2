@@ -114,52 +114,7 @@ class DatabaseSeeder extends Seeder
             'merek_armada' => 'Mercedes'
         ]);
 
-        Driver::create([
-            'nama_driver' => 'driver 1',
-            'nik_driver' => mt_rand(1000000000000000, 9999999999999999),
-            'umur_driver' => mt_rand(20, 40),
-            'telepon_driver' => mt_rand(100000000000, 999999999999),
-            'alamat_driver' => 'DIY'
-        ]);
-
-        Driver::create([
-            'nama_driver' => 'driver 2',
-            'nik_driver' => mt_rand(1000000000000000, 9999999999999999),
-            'umur_driver' => mt_rand(20, 40),
-            'telepon_driver' => mt_rand(100000000000, 999999999999),
-            'alamat_driver' => 'Surabaya'
-        ]);
-
-        Driver::create([
-            'nama_driver' => 'driver 3',
-            'nik_driver' => mt_rand(1000000000000000, 9999999999999999),
-            'umur_driver' => mt_rand(20, 40),
-            'telepon_driver' => mt_rand(100000000000, 999999999999),
-            'alamat_driver' => 'DIY'
-        ]);
-
-        Codriver::create([
-            'nama_codriver' => 'Codriver 1',
-            'nik_codriver' => mt_rand(1000000000000000, 9999999999999999),
-            'umur_codriver' => mt_rand(20, 40),
-            'telepon_codriver' => mt_rand(100000000000, 999999999999),
-            'alamat_codriver' => 'Semarang'
-        ]);
-
-        Codriver::create([
-            'nama_codriver' => 'Codriver 2',
-            'nik_codriver' => mt_rand(1000000000000000, 9999999999999999),
-            'umur_codriver' => mt_rand(20, 40),
-            'telepon_codriver' => mt_rand(100000000000, 999999999999),
-            'alamat_codriver' => 'Cepu'
-        ]);
-
-        Codriver::create([
-            'nama_codriver' => 'Codriver 3',
-            'nik_codriver' => mt_rand(1000000000000000, 9999999999999999),
-            'umur_codriver' => mt_rand(20, 40),
-            'telepon_codriver' => mt_rand(100000000000, 999999999999),
-            'alamat_codriver' => 'DKI'
-        ]);
+        Driver::factory(12)->create();
+        Codriver::factory(12)->create();
     }
 }
