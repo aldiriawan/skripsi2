@@ -114,7 +114,52 @@ class DatabaseSeeder extends Seeder
             'merek_armada' => 'Mercedes'
         ]);
 
-        Driver::factory(12)->create();
-        Codriver::factory(12)->create();
+        Driver::create([
+            'nama_driver' => 'Tony Stark',
+            'nik_driver' => '123456789',
+            'umur_driver' => '31',
+            'telepon_driver' => '089534071111',
+            'alamat_driver' => 'Jalan Avengers 1 RT 001 RW 088 Sleman DIY'
+        ]);
+
+        Driver::create([
+            'nama_driver' => 'Steve Rogers',
+            'nik_driver' => '987654321',
+            'umur_driver' => '32',
+            'telepon_driver' => '089534072222',
+            'alamat_driver' => 'Jalan Avengers 2 RT 002 RW 088 Sleman DIY'
+        ]);
+
+        Driver::create([
+            'nama_driver' => 'Thor Odinson',
+            'nik_driver' => '123459876',
+            'umur_driver' => '33',
+            'telepon_driver' => '089534073333',
+            'alamat_driver' => 'Jalan Avengers 3 RT 003 RW 088 Sleman DIY'
+        ]);
+
+        Codriver::create([
+            'nama_codriver' => 'Robert Downey Jr',
+            'nik_codriver' => '1122334455',
+            'umur_codriver' => '31',
+            'telepon_codriver' => '089534074444',
+            'alamat_codriver' => 'Jalan Avengers 4 RT 004 RW 088 Sleman DIY'
+        ]);
+
+        Codriver::create([
+            'nama_codriver' => 'Chris Evans',
+            'nik_codriver' => '5544332211',
+            'umur_codriver' => '32',
+            'telepon_codriver' => '089534075555',
+            'alamat_codriver' => 'Jalan Avengers 5 RT 005 RW 088 Sleman DIY'
+        ]);
+
+        Codriver::create([
+            'nama_codriver' => 'Chris Hemsworth',
+            'nik_codriver' => '1133557799',
+            'umur_codriver' => '33',
+            'telepon_codriver' => '089534076666',
+            'alamat_codriver' => 'Jalan Avengers 6 RT 006 RW 088 Sleman DIY'
+        ]);
     }
 }

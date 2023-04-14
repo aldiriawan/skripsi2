@@ -20,7 +20,7 @@
         @foreach ($trip as $t)
         <a href="/admin/{{ $t->tanggal_trip }}"
             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            {{ date('d-m-Y', strtotime($t->tanggal_trip)) }}
+            {{ date('d F Y', strtotime($t->tanggal_trip)) }}
             <i class="fas fa-fw fa-long-arrow-alt-right"></i>
         </a>
         @endforeach

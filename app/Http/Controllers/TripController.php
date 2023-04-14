@@ -7,6 +7,8 @@ use App\Models\Armada;
 use App\Models\Driver;
 use App\Models\Codriver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class TripController extends Controller
 {
@@ -17,7 +19,11 @@ class TripController extends Controller
      */
     public function index()
     {
-        $data = Trip::all();
+        $data = Trip::select('tanggal_trip', DB::raw('MAX(created_at) as created_at'))
+            ->groupBy('tanggal_trip')
+            ->orderBy('tanggal_trip', 'desc')
+            ->get();
+
         return view('trip.index', [
             'title' => 'Laporan Admin',
             'trip' => $data

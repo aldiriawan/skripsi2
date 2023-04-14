@@ -31,7 +31,7 @@
                     <tbody>
                         @foreach ($trip as $t)
                         <tr>
-                            <td>{{ $t->id_armada }}</td>
+                            <td>{{ $t->ao_armada }}</td>
                             <td>{{ $t->rute }}</td>
                             <td>{{ $t->id_driver }}</td>
                             <td>{{ $t->id_codriver }}</td>
