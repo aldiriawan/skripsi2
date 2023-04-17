@@ -25,7 +25,7 @@ class Armada extends Model
 
     public function ao_tipe_armada()
     {
-        return $this->belongsTo(TipeArmada::class);
+        return $this->belongsTo(TipeArmada::class, 'id_tipe_armada');
     }
 
     public function ao_trips()

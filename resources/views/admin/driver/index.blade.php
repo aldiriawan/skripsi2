@@ -39,17 +39,28 @@
                             <td>{{ $d->jumlah_minus }}</td>
                             <td>{{ $d->jumlah_kesalahan }}</td>
                             <td>
-                                <a href="/admin/driver/{{ $d->nik_driver }}" style="color: blue"><i
-                                        class="px-1 fas fa-eye"></i></a>
-                                <a href="/admin/driver/{{ $d->nik_driver }}/edit" style="color: orange"><i
-                                        class="px-1 fas fa-edit"></i></a>
-                                <form action="/admin/driver/{{ $d->nik_driver }}" method="POST" class="px-1 d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="border-0" style="color: red"
-                                        onclick="return confirm('Apakah anda yakin?')"><i
-                                            class="fas fa-trash danger"></i></button>
-                                </form>
+                                <div class="d-flex justify-content-center">
+                                    <a href="/admin/driver/{{ $d->nik_driver }}" class="btn btn-primary btn-sm mr-2"
+                                        title="Lihat Detail">
+                                        <i class="fas fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Lihat Detail"></i>
+                                    </a>
+                                    <a href="/admin/driver/{{ $d->nik_driver }}/edit"
+                                        class="btn btn-warning btn-sm mr-2" title="Edit Data">
+                                        <i class="fas fa-edit" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Edit Data"></i>
+                                    </a>
+                                    <form action="/admin/driver/{{ $d->nik_driver }}" method="POST" class="d-inline"
+                                        title="Hapus Data">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm" style="color: rgb(255, 255, 255)"
+                                            onclick="return confirm('Apakah anda yakin?')">
+                                            <i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Hapus Data"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

@@ -39,18 +39,28 @@
                             <td>{{ $cd->jumlah_minus }}</td>
                             <td>{{ $cd->jumlah_kesalahan }}</td>
                             <td>
-                                <a href="/admin/codriver/{{ $cd->nik_codriver }}" style="color: blue"><i
-                                        class="px-1 fas fa-eye"></i></a>
-                                <a href="/admin/codriver/{{ $cd->nik_codriver }}/edit" style="color: orange"><i
-                                        class="px-1 fas fa-edit"></i></a>
-                                <form action="/admin/codriver/{{ $cd->nik_codriver }}" method="POST"
-                                    class="px-1 d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="border-0" style="color: red"
-                                        onclick="return confirm('Apakah anda yakin?')"><i
-                                            class="fas fa-trash danger"></i></button>
-                                </form>
+                                <div class="d-flex justify-content-center">
+                                    <a href="/admin/codriver/{{ $cd->nik_codriver }}"
+                                        class="btn btn-primary btn-sm mr-2" title="Lihat Detail">
+                                        <i class="fas fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Lihat Detail"></i>
+                                    </a>
+                                    <a href="/admin/codriver/{{ $cd->nik_codriver }}/edit"
+                                        class="btn btn-warning btn-sm mr-2" title="Edit Data">
+                                        <i class="fas fa-edit" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Edit Data"></i>
+                                    </a>
+                                    <form action="/admin/codriver/{{ $cd->nik_codriver }}" method="POST"
+                                        class="d-inline" title="Hapus Data">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm" style="color: rgb(255, 255, 255)"
+                                            onclick="return confirm('Apakah anda yakin?')">
+                                            <i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Hapus Data"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

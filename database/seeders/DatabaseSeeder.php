@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rute;
 use App\Models\User;
 use App\Models\Armada;
 use App\Models\Driver;
+use App\Models\Ritase;
 use App\Models\Codriver;
 use App\Models\TipeArmada;
 use Illuminate\Database\Seeder;
@@ -80,37 +82,37 @@ class DatabaseSeeder extends Seeder
 
         Armada::create([
             'kode_armada' => 'AOLC01',
-            'id_tipe_armada' => mt_rand(1, 3),
+            'id_tipe_armada' => 1,
             'merek_armada' => 'Mercedes'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC02',
-            'id_tipe_armada' => mt_rand(1, 3),
+            'id_tipe_armada' => 2,
             'merek_armada' => 'Hino'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC03',
-            'id_tipe_armada' => mt_rand(1, 3),
+            'id_tipe_armada' => 3,
             'merek_armada' => 'Mercedes'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC04',
-            'id_tipe_armada' => mt_rand(1, 3),
+            'id_tipe_armada' => 3,
             'merek_armada' => 'Mercedes'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC05',
-            'id_tipe_armada' => mt_rand(1, 3),
+            'id_tipe_armada' => 2,
             'merek_armada' => 'Hino'
         ]);
 
         Armada::create([
             'kode_armada' => 'AOLC06',
-            'id_tipe_armada' => mt_rand(1, 3),
+            'id_tipe_armada' => 1,
             'merek_armada' => 'Mercedes'
         ]);
 
@@ -160,6 +162,36 @@ class DatabaseSeeder extends Seeder
             'umur_codriver' => '33',
             'telepon_codriver' => '089534076666',
             'alamat_codriver' => 'Jalan Avengers 6 RT 006 RW 088 Sleman DIY'
+        ]);
+
+        Rute::create([
+            'nama_rute' => 'LC-BM',
+            'lokasi_asal' => 'Lippo Cikarang',
+            'lokasi_tujuan' => 'Blok M',
+            'jarak_km' => '60'
+        ]);
+
+        Rute::create([
+            'nama_rute' => 'BM-LC',
+            'lokasi_asal' => 'Blok M',
+            'lokasi_tujuan' => 'Lippo Cikarang',
+            'jarak_km' => '52'
+        ]);
+
+        Ritase::create([
+            'kode_ritase' => '1'
+        ]);
+
+        Ritase::create([
+            'kode_ritase' => '2'
+        ]);
+
+        Ritase::create([
+            'kode_ritase' => '3'
+        ]);
+
+        Ritase::create([
+            'kode_ritase' => '4'
         ]);
     }
 }

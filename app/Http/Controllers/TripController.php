@@ -6,6 +6,8 @@ use App\Models\Trip;
 use App\Models\Armada;
 use App\Models\Driver;
 use App\Models\Codriver;
+use App\Models\Ritase;
+use App\Models\Rute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +42,8 @@ class TripController extends Controller
         return view('trip.create', [
             'title' => 'Tambah Laporan Admin',
             'armadas' => Armada::all(),
+            'rutes' => Rute::all(),
+            'ritases' => Ritase::all(),
             'drivers' => Driver::all(),
             'codrivers' => Codriver::all()
         ]);
@@ -56,7 +60,8 @@ class TripController extends Controller
         $validatedData = $request->validate([
             'tanggal_trip' => 'required',
             'id_armada' => 'required',
-            'rute' => 'required',
+            'id_rute' => 'required',
+            'id_ritase' => 'required',
             'id_driver' => 'required',
             'id_codriver' => 'required',
             'jumlah_penumpang_admin' => 'required|numeric',
@@ -74,13 +79,20 @@ class TripController extends Controller
      * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function show(Trip $trip)
+    public function show(Trip $trip, $tanggal_trip)
     {
-        $data = Trip::all();
+        $data = Trip::where('tanggal_trip', $tanggal_trip)->get();
         return view('trip.show', [
             'trip' => $data,
             'title' => 'Detail Trip',
+            'tanggal_trip' => $tanggal_trip
         ]);
+
+        // $data = Trip::all();
+        // return view('trip.show', [
+        //     'trip' => $data,
+        //     'title' => 'Detail Trip',
+        // ]);
     }
 
     /**
@@ -95,6 +107,8 @@ class TripController extends Controller
             'trip' => $trip,
             'title' => 'Edit Trip',
             'armadas' => Armada::all(),
+            'rutes' => Rute::all(),
+            'ritases' => Ritase::all(),
             'drivers' => Driver::all(),
             'codrivers' => Codriver::all(),
         ]);
@@ -112,7 +126,8 @@ class TripController extends Controller
         $rules = [
             'tanggal_trip' => 'required',
             'id_armada' => 'required',
-            'rute' => 'required',
+            'id_rute' => 'required',
+            'id_ritase' => 'required',
             'id_driver' => 'required',
             'id_codriver' => 'required',
             'jumlah_penumpang_admin' => 'required|numeric',

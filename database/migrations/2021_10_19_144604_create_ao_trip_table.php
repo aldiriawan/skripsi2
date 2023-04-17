@@ -19,7 +19,8 @@ class CreateAoTripTable extends Migration
             $table->foreignId('id_driver');
             $table->foreignId('id_codriver');
             $table->date('tanggal_trip');
-            $table->string('rute');
+            $table->foreignId('id_rute');
+            $table->foreignId('id_ritase');
             $table->integer('jumlah_penumpang_admin');
             $table->integer('jumlah_penumpang_checker')->nullable();
             $table->integer('jumlah_minus')->nullable();

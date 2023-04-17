@@ -26,7 +26,7 @@
                             <th>#</th>
                             <th>Kode Armada</th>
                             <th>Merek Armada</th>
-                            <th>Tipe Armada</th>
+                            <th>Kapasitas Armada</th>
                             <th>Terakhir Service</th>
                             <th>Jumlah Kerusakan</th>
                             <th>Aksi</th>
@@ -38,21 +38,26 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $armada->kode_armada }}</td>
                             <td>{{ $armada->merek_armada }}</td>
-                            <td>{{ $armada->id_tipe_armada }}</td>
+                            <td>{{ $armada->ao_tipe_armada->kapasitas }}</td>
                             <td>{{ date('d-m-Y', strtotime($armada->serviced_at)) }}</td>
                             <td>{{ $armada->jumlah_kerusakan}}</td>
                             <td>
-                                <a href="/admin/armada/{{ $armada->kode_armada }}/edit" style="color: orange"><i
-                                        class="px-1 fas fa-edit"></i></a>
-                                <form action="/admin/armada/{{ $armada->kode_armada }}" method="POST"
-                                    class="px-1 d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="border-0 px-1" style="color: red"
-                                        onclick="return confirm('Apakah anda yakin?')"><i
-                                            class="fas fa-trash danger"></i></button>
-                                </form>
+                                <div class="d-flex justify-content-center">
+                                    <a href="/admin/armada/{{ $armada->kode_armada }}/edit"
+                                        class="btn btn-warning btn-sm mr-2">
+                                        <i class="fas fa-edit" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Edit Data"></i>
+                                    </a>
+                                    <form action="/admin/armada/{{ $armada->kode_armada }}" method="POST"
+                                        class="d-inline" title="Hapus Data"
+                                        onsubmit="return confirm('Apakah anda yakin ingin menghapus armada ini?')">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
                             </td>
+
                         </tr>
                         @endforeach
                     </tbody>
