@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Checker;
+use App\Models\Trip;
 use App\Models\Armada;
 use App\Models\Driver;
 use App\Models\Codriver;
-use App\Models\Trip;
+use App\Models\Ritase;
+use App\Models\Rute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CheckerController extends Controller
 {
@@ -18,10 +21,13 @@ class CheckerController extends Controller
      */
     public function index()
     {
-        $data = Trip::all();
+        $data = Trip::select('tanggal_trip', DB::raw('MAX(created_at) as created_at'))
+            ->groupBy('tanggal_trip')
+            ->orderBy('tanggal_trip', 'desc')
+            ->get();
+
         return view('checker.index', [
             'title' => 'Laporan Checker',
-            'active' => 'checker',
             'trip' => $data
         ]);
     }
@@ -35,8 +41,9 @@ class CheckerController extends Controller
     {
         return view('checker.create', [
             'title' => 'Tambah Laporan Checker',
-            'trips' => Trip::all(),
             'armadas' => Armada::all(),
+            'rutes' => Rute::all(),
+            'ritases' => Ritase::all(),
             'drivers' => Driver::all(),
             'codrivers' => Codriver::all()
         ]);
@@ -51,10 +58,14 @@ class CheckerController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'jumlah_penumpang_checker' => 'required|numeric',
-            'jumlah_minus' => 'required|numeric',
-            'gambar_bukti_minus' => ''
-
+            'tanggal_trip' => 'required',
+            'id_armada' => 'required',
+            'id_rute' => 'required',
+            'id_ritase' => 'required',
+            'id_driver' => 'required',
+            'id_codriver' => 'required',
+            'jumlah_penumpang_admin' => 'required|numeric',
+            'catatan' => ''
         ]);
 
         Trip::create($validatedData);
@@ -65,30 +76,39 @@ class CheckerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Checker  $checker
+     * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function show(Checker $checker)
+    public function show(Trip $trip, $tanggal_trip)
     {
-        $data = Trip::all();
-        return view('trip.show', [
+        $data = Trip::where('tanggal_trip', $tanggal_trip)->get();
+        return view('checker.show', [
             'trip' => $data,
             'title' => 'Detail Trip',
+            'tanggal_trip' => $tanggal_trip
         ]);
+
+        // $data = Trip::all();
+        // return view('trip.show', [
+        //     'trip' => $data,
+        //     'title' => 'Detail Trip',
+        // ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Checker  $checker
+     * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function edit(Checker $checker)
+    public function edit(Trip $trip)
     {
-        return view('trip.edit', [
-            'checker' => $checker,
+        return view('checker.edit', [
+            'trip' => $trip,
             'title' => 'Edit Trip',
             'armadas' => Armada::all(),
+            'rutes' => Rute::all(),
+            'ritases' => Ritase::all(),
             'drivers' => Driver::all(),
             'codrivers' => Codriver::all(),
         ]);
@@ -98,20 +118,25 @@ class CheckerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Checker  $checker
+     * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Checker $checker)
+    public function update(Request $request, Trip $trip)
     {
         $rules = [
-            'jumlah_penumpang_checker' => 'required|numeric',
-            'jumlah_minus' => 'required|numeric',
-            'gambar_bukti_minus' => ''
+            'tanggal_trip' => 'required',
+            'id_armada' => 'required',
+            'id_rute' => 'required',
+            'id_ritase' => 'required',
+            'id_driver' => 'required',
+            'id_codriver' => 'required',
+            'jumlah_penumpang_admin' => 'required|numeric',
+            'catatan' => ''
         ];
 
         $validatedData = $request->validate($rules);
 
-        Trip::where('id', $checker->id)
+        Trip::where('id', $trip->id)
             ->update($validatedData);
 
         return redirect('/checker')->with('success', 'Update Berhasil');
@@ -120,12 +145,12 @@ class CheckerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Checker  $checker
+     * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Checker $checker)
+    public function destroy(Trip $trip)
     {
-        Trip::destroy($checker->id);
-        return redirect('/admin')->with('success', 'Laporan Checker berhasil dihapus');
+        Trip::destroy($trip->id);
+        return redirect('/checker')->with('success', 'Laporan Admin berhasil dihapus');
     }
 }

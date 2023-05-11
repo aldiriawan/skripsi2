@@ -21,7 +21,6 @@ class CreateAoDriverTable extends Migration
             $table->string('telepon_driver');
             $table->string('alamat_driver');
             $table->integer('jumlah_minus')->nullable();
-            $table->integer('jumlah_kesalahan')->nullable();
             $table->timestamps();
         });
     }

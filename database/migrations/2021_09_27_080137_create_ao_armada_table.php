@@ -18,8 +18,6 @@ class CreateAoArmadaTable extends Migration
             $table->foreignId('id_tipe_armada');
             $table->string('kode_armada')->unique();
             $table->string('merek_armada');
-            $table->date('serviced_at')->nullable();
-            $table->integer('jumlah_kerusakan')->nullable();
             $table->timestamps();
         });
     }

@@ -21,7 +21,6 @@ class CreateAoCodriverTable extends Migration
             $table->string('telepon_codriver');
             $table->string('alamat_codriver');
             $table->integer('jumlah_minus')->nullable();
-            $table->integer('jumlah_kesalahan')->nullable();
             $table->timestamps();
         });
     }

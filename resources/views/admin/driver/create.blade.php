@@ -30,41 +30,47 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="umur_driver" class="form-label">Umur</label>
-                            <input type="text" class="form-control @error('umur_driver') is-invalid @enderror"
-                                id="umur_driver" name="umur_driver" value="{{ old('umur_driver') }}" required>
-                            @error('umur_driver')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="umur_driver" class="form-label">Umur</label>
+                                    <input type="text" class="form-control @error('umur_driver') is-invalid @enderror"
+                                        id="umur_driver" name="umur_driver" value="{{ old('umur_driver') }}" required>
+                                    @error('umur_driver')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col">
+                                    <label for="telepon_driver" class="form-label">Telepon</label>
+                                    <input type="text"
+                                        class="form-control @error('telepon_driver') is-invalid @enderror"
+                                        id="telepon_driver" name="telepon_driver" value="{{ old('telepon_driver') }}"
+                                        required>
+                                    @error('telepon_driver')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="telepon_driver" class="form-label">Telepon</label>
-                            <input type="text" class="form-control @error('telepon_driver') is-invalid @enderror"
-                                id="telepon_driver" name="telepon_driver" value="{{ old('telepon_driver') }}" required>
-                            @error('telepon_driver')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="form-group mt-3">
+                                <label for="alamat_driver" class="form-label">Alamat</label>
+                                <textarea class="form-control @error('alamat_driver') is-invalid @enderror"
+                                    id="alamat_driver" name="alamat_driver" value="{{ old('alamat_driver') }}"
+                                    required></textarea>
+                                @error('alamat_driver')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat_driver" class="form-label">Alamat</label>
-                            <input type="text" class="form-control @error('alamat_driver') is-invalid @enderror"
-                                id="alamat_driver" name="alamat_driver" value="{{ old('alamat_driver') }}" required>
-                            @error('alamat_driver')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block mt-3">
+                                    Tambah Driver
+                                </button>
+                                <a href="/admin/driver" class="btn btn-secondary btn-block mt-2">Batal</a>
                             </div>
-                            @enderror
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-block mt-3">
-                                Tambah Driver
-                            </button>
-                            <a href="/admin/driver" class="btn btn-secondary btn-block mt-3">Batal</a>
-                        </div>
                     </form>
                 </div>
             </div>

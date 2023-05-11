@@ -57,7 +57,7 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'tanggal_trip' => 'required',
             'id_armada' => 'required',
             'id_rute' => 'required',
@@ -66,6 +66,17 @@ class TripController extends Controller
             'id_codriver' => 'required',
             'jumlah_penumpang_admin' => 'required|numeric',
             'catatan' => ''
+        ];
+
+        $validatedData = $request->validate($rules, [
+            'tanggal_trip.required' => 'Tanggal Trip harus diisi',
+            'id_armada.required' => 'Kode Armada harus diisi',
+            'id_rute.required' => 'Rute harus diisi',
+            'id_ritase.required' => 'Ritase harus diisi',
+            'id_driver.required' => 'Driver harus diisi',
+            'id_codriver.required' => 'Co-Driver harus diisi',
+            'jumlah_penumpang_admin.required' => 'Jumlah Penumpang harus diisi',
+            'jumlah_penumpang_admin.numeric' => 'Jumlah Penumpang harus berupa angka'
         ]);
 
         Trip::create($validatedData);
@@ -101,8 +112,10 @@ class TripController extends Controller
      * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trip $trip)
+    public function edit($id)
     {
+        $trip = Trip::findOrFail($id);
+
         return view('trip.edit', [
             'trip' => $trip,
             'title' => 'Edit Trip',
@@ -114,6 +127,7 @@ class TripController extends Controller
         ]);
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -121,8 +135,9 @@ class TripController extends Controller
      * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update(Request $request, $id)
     {
+        $trip = Trip::findOrFail($id);
         $rules = [
             'tanggal_trip' => 'required',
             'id_armada' => 'required',
@@ -134,7 +149,16 @@ class TripController extends Controller
             'catatan' => ''
         ];
 
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate($rules, [
+            'tanggal_trip.required' => 'Tanggal Trip harus diisi',
+            'id_armada.required' => 'Kode Armada harus diisi',
+            'id_rute.required' => 'Rute harus diisi',
+            'id_ritase.required' => 'Ritase harus diisi',
+            'id_driver.required' => 'Driver harus diisi',
+            'id_codriver.required' => 'Co-Driver harus diisi',
+            'jumlah_penumpang_admin.required' => 'Jumlah Penumpang harus diisi',
+            'jumlah_penumpang_admin.numeric' => 'Jumlah Penumpang harus berupa angka'
+        ]);
 
         Trip::where('id', $trip->id)
             ->update($validatedData);
@@ -148,8 +172,9 @@ class TripController extends Controller
      * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trip $trip)
+    public function destroy($id)
     {
+        $trip = Trip::findOrFail($id);
         Trip::destroy($trip->id);
         return redirect('/admin')->with('success', 'Laporan Admin berhasil dihapus');
     }

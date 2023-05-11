@@ -103,7 +103,11 @@ class ArmadaController extends Controller
             $rules['kode_armada'] = 'required|max:255|unique:ao_armada';
         }
 
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate($rules, [
+            'kode_armada.unique' => 'Kode Armada ini sudah digunakan',
+            'merek_armada.required' => 'Merek Armada harus diisi',
+            'id_tipe_armada.required' => 'Tipe Armada harus diisi'
+        ]);
 
         Armada::where('id', $armada->id)
             ->update($validatedData);

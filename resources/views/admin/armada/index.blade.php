@@ -27,8 +27,6 @@
                             <th>Kode Armada</th>
                             <th>Merek Armada</th>
                             <th>Kapasitas Armada</th>
-                            <th>Terakhir Service</th>
-                            <th>Jumlah Kerusakan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -39,8 +37,6 @@
                             <td>{{ $armada->kode_armada }}</td>
                             <td>{{ $armada->merek_armada }}</td>
                             <td>{{ $armada->ao_tipe_armada->kapasitas }}</td>
-                            <td>{{ date('d-m-Y', strtotime($armada->serviced_at)) }}</td>
-                            <td>{{ $armada->jumlah_kerusakan}}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="/admin/armada/{{ $armada->kode_armada }}/edit"

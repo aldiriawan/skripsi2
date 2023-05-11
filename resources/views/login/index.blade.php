@@ -4,13 +4,10 @@
 <div class="container">
     <!-- Outer Row -->
     <div class="row justify-content-center">
-
         <div class="col-md-6">
-
             @if(session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
-
             </div>
             @endif
 
@@ -26,8 +23,8 @@
                     <div class="row">
                         <div class="col-lg">
                             <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Please Login</h1>
+                                <div class="text-center mb-3">
+                                    <img src="{{ asset('images/logoao.png') }}" alt="Logo" width="100">
                                 </div>
                                 <form class="user" action="/login" method="POST">
                                     @csrf

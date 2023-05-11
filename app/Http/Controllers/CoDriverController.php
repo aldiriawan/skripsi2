@@ -41,12 +41,26 @@ class CodriverController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'nama_codriver' => 'required|max:100|unique:ao_codriver',
-            'nik_codriver' => 'required|numeric|unique:ao_codriver',
+            'nik_codriver' => 'required|numeric|digits:16|unique:ao_codriver',
             'umur_codriver' => 'required|numeric|min:20|max:70',
-            'telepon_codriver' => 'required|numeric',
+            'telepon_codriver' => 'required|numeric|min:12',
             'alamat_codriver' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules, [
+            'nama_codriver.unique' => 'Nama Lengkap Codriver tidak boleh sama dengan codriver lain',
+            'nik_codriver.unique' => 'NIK Codriver tidak boleh sama dengan codriver lain',
+            'nik_codriver.digits' => 'NIK Codriver harus :digits digit',
+            'umur_codriver.required' => 'Umur Codriver harus diisi',
+            'umur_codriver.numeric' => 'Umur Codriver harus berupa angka',
+            'umur_codriver.min' => 'Umur Codriver harus di atas 20 tahun',
+            'umur_codriver.max' => 'Umur Codriver harus di bawah 70 tahun',
+            'telepon_codriver.required' => 'Telepon Codriver harus diisi',
+            'telepon_codriver.numeric' => 'Telepon Codriver harus berupa angka',
+            'telepon_codriver.min' => 'Telepon Codriver minimal :min digit',
+            'alamat_codriver.required' => 'Alamat Codriver harus diisi'
         ]);
 
         Codriver::create($validatedData);
@@ -93,25 +107,38 @@ class CodriverController extends Controller
     {
         $rules = [
             'umur_codriver' => 'required|numeric|min:20|max:70',
-            'telepon_codriver' => 'required|numeric',
+            'telepon_codriver' => 'required|numeric|min:12',
             'alamat_codriver' => 'required',
         ];
 
         if ($request->nama_codriver != $codriver->nama_codriver) {
-            $rules['nama_codriver'] = 'required|max:100|unique:ao_codriver';
+            $rules['nama_codriver'] = 'required|max:100|unique:ao_codriver,nama_codriver,' . $codriver->id;
         }
 
         if ($request->nik_codriver != $codriver->nik_codriver) {
-            $rules['nik_codriver'] = 'required|unique:ao_codriver';
+            $rules['nik_codriver'] = 'required|digits:16|unique:ao_codriver,nik_codriver,' . $codriver->id;
         }
 
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate($rules, [
+            'nama_codriver.unique' => 'Nama Lengkap Codriver tidak boleh sama dengan codriver lain',
+            'nik_codriver.unique' => 'NIK Codriver tidak boleh sama dengan codriver lain',
+            'nik_codriver.digits' => 'NIK Codriver minimal :digits digit',
+            'umur_codriver.required' => 'Umur Codriver harus diisi',
+            'umur_codriver.numeric' => 'Umur Codriver harus berupa angka',
+            'umur_codriver.min' => 'Umur Codriver harus di atas 20 tahun',
+            'umur_codriver.max' => 'Umur Codriver harus di bawah 70 tahun',
+            'telepon_codriver.required' => 'Telepon Codriver harus diisi',
+            'telepon_codriver.numeric' => 'Telepon Codriver harus berupa angka',
+            'telepon_codriver.min' => 'Telepon Codriver minimal :min digit',
+            'alamat_codriver.required' => 'Alamat Codriver harus diisi'
+        ]);
 
         Codriver::where('id', $codriver->id)
             ->update($validatedData);
 
         return redirect('/admin/codriver')->with('success', 'Update Berhasil');
     }
+
 
     /**
      * Remove the specified resource from storage.

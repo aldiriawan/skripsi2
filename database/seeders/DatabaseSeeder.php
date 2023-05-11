@@ -165,14 +165,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Rute::create([
-            'nama_rute' => 'LC-BM',
+            'kode_rute' => 'LC-BM',
             'lokasi_asal' => 'Lippo Cikarang',
             'lokasi_tujuan' => 'Blok M',
             'jarak_km' => '60'
         ]);
 
         Rute::create([
-            'nama_rute' => 'BM-LC',
+            'kode_rute' => 'BM-LC',
             'lokasi_asal' => 'Blok M',
             'lokasi_tujuan' => 'Lippo Cikarang',
             'jarak_km' => '52'

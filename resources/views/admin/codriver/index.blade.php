@@ -26,7 +26,6 @@
                             <th>Nama Lengkap</th>
                             <th>Telepon</th>
                             <th>Jumlah Minus</th>
-                            <th>Jumlah Kesalahan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -37,7 +36,6 @@
                             <td>{{ $cd->nama_codriver }}</td>
                             <td>{{ $cd->telepon_codriver }}</td>
                             <td>{{ $cd->jumlah_minus }}</td>
-                            <td>{{ $cd->jumlah_kesalahan }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="/admin/codriver/{{ $cd->nik_codriver }}"

@@ -15,7 +15,7 @@ class CreateAoRute extends Migration
     {
         Schema::create('ao_rute', function (Blueprint $table) {
             $table->id('id');
-            $table->string('nama_rute')->unique();
+            $table->string('kode_rute')->unique();
             $table->string('lokasi_asal');
             $table->string('lokasi_tujuan');
             $table->integer('jarak_km');

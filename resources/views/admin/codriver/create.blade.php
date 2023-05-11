@@ -31,43 +31,48 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="umur_codriver" class="form-label">Umur</label>
-                            <input type="text" class="form-control @error('umur_codriver') is-invalid @enderror"
-                                id="umur_codriver" name="umur_codriver" value="{{ old('umur_codriver') }}" required>
-                            @error('umur_codriver')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="umur_codriver" class="form-label">Umur</label>
+                                    <input type="text" class="form-control @error('umur_codriver') is-invalid @enderror"
+                                        id="umur_codriver" name="umur_codriver" value="{{ old('umur_codriver') }}"
+                                        required>
+                                    @error('umur_codriver')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col">
+                                    <label for="telepon_codriver" class="form-label">Telepon</label>
+                                    <input type="text"
+                                        class="form-control @error('telepon_codriver') is-invalid @enderror"
+                                        id="telepon_codriver" name="telepon_codriver"
+                                        value="{{ old('telepon_codriver') }}" required>
+                                    @error('telepon_codriver')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="telepon_codriver" class="form-label">Telepon</label>
-                            <input type="text" class="form-control @error('telepon_codriver') is-invalid @enderror"
-                                id="telepon_codriver" name="telepon_codriver" value="{{ old('telepon_codriver') }}"
-                                required>
-                            @error('telepon_codriver')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="form-group mt-3">
+                                <label for="alamat_codriver" class="form-label">Alamat</label>
+                                <textarea class="form-control @error('alamat_codriver') is-invalid @enderror"
+                                    id="alamat_codriver" name="alamat_codriver" value="{{ old('alamat_codriver') }}"
+                                    required></textarea>
+                                @error('alamat_codriver')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat_codriver" class="form-label">Alamat</label>
-                            <input type="text" class="form-control @error('alamat_codriver') is-invalid @enderror"
-                                id="alamat_codriver" name="alamat_codriver" value="{{ old('alamat_codriver') }}"
-                                required>
-                            @error('alamat_codriver')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block mt-3">
+                                    Tambah Co-Driver
+                                </button>
+                                <a href="/admin/codriver" class="btn btn-secondary btn-block mt-2">Batal</a>
                             </div>
-                            @enderror
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-block mt-3">
-                                Tambah Co-Driver
-                            </button>
-                            <a href="/admin/codriver" class="btn btn-secondary btn-block mt-3">Batal</a>
-                        </div>
                     </form>
                 </div>
             </div>

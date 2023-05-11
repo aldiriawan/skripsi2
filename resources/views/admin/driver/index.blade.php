@@ -26,7 +26,6 @@
                             <th>Nama Lengkap</th>
                             <th>Telepon</th>
                             <th>Jumlah Minus</th>
-                            <th>Jumlah Kesalahan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -37,7 +36,6 @@
                             <td>{{ $d->nama_driver }}</td>
                             <td>{{ $d->telepon_driver }}</td>
                             <td>{{ $d->jumlah_minus }}</td>
-                            <td>{{ $d->jumlah_kesalahan }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="/admin/driver/{{ $d->nik_driver }}" class="btn btn-primary btn-sm mr-2"

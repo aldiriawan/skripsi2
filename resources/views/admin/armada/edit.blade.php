@@ -2,68 +2,68 @@
 
 @section('container')
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit Data Armada</h1>
-    </div>
-    <div class="col-lg-5">
-        <form action="/admin/armada/{{ $armada->kode_armada }}" method="POST">
-            @method('put')
-            @csrf
-            <div class="form-group">
-                <label for="kode_armada" class="form-label">Kode Armada</label>
-                <input type="text" class="form-control form-control-user @error('kode_armada') is-invalid @enderror"
-                    id="kode_armada" placeholder="Kode Armada" name="kode_armada"
-                    value="{{ old('kode_armada', $armada->kode_armada) }}" autofocus required>
-                @error('kode_armada')
-                <div class="invalid-feedback">
-                    {{ $message }}
+    <h1 class="h3 mb-4 text-gray-800">Edit Data Armada</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/admin/armada/{{ $armada->kode_armada }}" method="POST">
+                        @method('put')
+                        @csrf
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="kode_armada" class="form-label">Kode Armada</label>
+                                    <input type="text"
+                                        class="form-control form-control-user @error('kode_armada') is-invalid @enderror"
+                                        id="kode_armada" placeholder="Kode Armada" name="kode_armada"
+                                        value="{{ old('kode_armada', $armada->kode_armada) }}" autofocus required>
+                                    @error('kode_armada')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col">
+                                    <label for="merek_armada" class="form-label">Merek Armada</label>
+                                    <input type="text"
+                                        class="form-control form-control-user @error('merek_armada') is-invalid @enderror"
+                                        id="merek_armada" placeholder="Merek Armada" name="merek_armada"
+                                        value="{{ old('merek_armada', $armada->merek_armada) }}" required>
+                                    @error('merek_armada')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col">
+                                    <label for="id_tipe_armada" class="form-label">Tipe Armada</label>
+                                    <br>
+                                    <select class="form-control" name="id_tipe_armada">
+                                        @foreach ($tipe_armadas as $tipe_armada)
+                                        @if (old('id_tipe_armada', $armada->id_tipe_armada) == $tipe_armada->id)
+                                        <option value="{{ $armada->id_tipe_armada }}" selected>{{
+                                            $tipe_armada->tipe_armada }}
+                                        </option>
+                                        @else
+                                        <option value="{{ $armada->id_tipe_armada }}">{{ $tipe_armada->tipe_armada }}
+                                        </option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block mt-3">
+                                Edit Armada
+                            </button>
+                            <a href="/admin/armada" class="btn btn-secondary btn-block mt-2">Batal</a>
+                        </div>
+                    </form>
                 </div>
-                @enderror
             </div>
-            <div class="form-group">
-                <label for="merek_armada" class="form-label">Merek Armada</label>
-                <input type="text" class="form-control form-control-user @error('merek_armada') is-invalid @enderror"
-                    id="merek_armada" placeholder="Merek Armada" name="merek_armada"
-                    value="{{ old('merek_armada', $armada->merek_armada) }}" required>
-                @error('merek_armada')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label for="id_tipe_armada" class="form-label">Tipe Armada</label>
-                <br>
-                <select class="form-control" name="id_tipe_armada">
-                    @foreach ($tipe_armadas as $ta)
-                    @if (old('id_tipe_armada') == $ta->id)
-                    <option value="{{ $ta->id }}" selected>{{ $ta->tipe_armada }}</option>
-                    @else
-                    <option value="{{ $ta->id }}">{{ $ta->tipe_armada }}</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="serviced_at" class="form-label">Terakhir Service</label>
-                <input type="date" class="form-control form-control-user @error('serviced_at') is-invalid @enderror"
-                    id="serviced_at" name="serviced_at" value="{{ old('serviced_at', $armada->serviced_at) }}" required>
-                @error('serviced_at')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">
-                    Update
-                </button>
-                <a href="/admin/armada" class="my-2 btn btn-secondary">Batal</a>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
 @endsection

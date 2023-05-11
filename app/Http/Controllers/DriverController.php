@@ -41,12 +41,26 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'nama_driver' => 'required|max:100|unique:ao_driver',
-            'nik_driver' => 'required|numeric|min:16|unique:ao_driver',
+            'nik_driver' => 'required|numeric|digits:16|unique:ao_driver',
             'umur_driver' => 'required|numeric|min:20|max:70',
-            'telepon_driver' => 'required|numeric',
+            'telepon_driver' => 'required|numeric|min:12',
             'alamat_driver' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules, [
+            'nama_driver.unique' => 'Nama Lengkap Driver tidak boleh sama dengan Driver lain',
+            'nik_driver.unique' => 'NIK Driver tidak boleh sama dengan Driver lain',
+            'nik_driver.digits' => 'NIK Driver minimal :digits digit',
+            'umur_driver.required' => 'Umur Driver harus diisi',
+            'umur_driver.numeric' => 'Umur Driver harus berupa angka',
+            'umur_driver.min' => 'Umur Driver harus di atas :min tahun',
+            'umur_driver.max' => 'Umur Driver harus di bawah :max tahun',
+            'telepon_driver.required' => 'Telepon Driver harus diisi',
+            'telepon_driver.numeric' => 'Telepon Driver harus berupa angka',
+            'telepon_driver.min' => 'Telepon Driver minimal :min digit',
+            'alamat_driver.required' => 'Alamat Driver harus diisi'
         ]);
 
         Driver::create($validatedData);
@@ -93,7 +107,7 @@ class DriverController extends Controller
     {
         $rules = [
             'umur_driver' => 'required|numeric|min:20|max:70',
-            'telepon_driver' => 'required|numeric',
+            'telepon_driver' => 'required|numeric|min:12',
             'alamat_driver' => 'required',
         ];
 
@@ -102,10 +116,22 @@ class DriverController extends Controller
         }
 
         if ($request->nik_driver != $driver->nik_driver) {
-            $rules['nik_driver'] = 'required|unique:ao_driver';
+            $rules['nik_driver'] = 'required|digits:16|unique:ao_driver';
         }
 
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validate($rules, [
+            'nama_driver.unique' => 'Nama Lengkap Driver tidak boleh sama dengan Driver lain',
+            'nik_driver.unique' => 'NIK Driver tidak boleh sama dengan Driver lain',
+            'nik_driver.digits' => 'NIK Driver minimal :digits digit',
+            'umur_driver.required' => 'Umur Driver harus diisi',
+            'umur_driver.numeric' => 'Umur Driver harus berupa angka',
+            'umur_driver.min' => 'Umur Driver harus di atas :min tahun',
+            'umur_driver.max' => 'Umur Driver harus di bawah :max tahun',
+            'telepon_driver.required' => 'Telepon Driver harus diisi',
+            'telepon_driver.numeric' => 'Telepon Driver harus berupa angka',
+            'telepon_driver.min' => 'Telepon Driver minimal :min digit',
+            'alamat_driver.required' => 'Alamat Driver harus diisi'
+        ]);
 
         Driver::where('id', $driver->id)
             ->update($validatedData);
